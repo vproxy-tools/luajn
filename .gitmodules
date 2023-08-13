@@ -1,0 +1,4 @@
+[submodule "lua-source"]
+	path = lua-source
+	url = https://github.com/vproxy-tools/lua-source.git
+	branch = patch

@@ -1,0 +1,207 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+}
+
+group = 'io.vproxy'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+subprojects {
+    apply plugin: 'java-library'
+
+    group 'io.vproxy'
+    version rootProject.version
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+        options.incremental = false
+        options.compilerArgs += '--enable-preview'
+    }
+    tasks.withType(JavaExec) {
+        jvmArgs += '--enable-preview'
+        jvmArgs += '--enable-native-access=ALL-UNNAMED'
+        javaLauncher.set(javaToolchains.launcherFor(java.toolchain))
+    }
+    tasks.withType(Test) {
+        jvmArgs += '--enable-preview'
+        jvmArgs += '--enable-native-access=ALL-UNNAMED'
+
+        testLogging {
+            showStandardStreams = true
+            events TestLogEvent.FAILED, TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.STARTED
+            maxGranularity 100
+            exceptionFormat "full"
+            showCauses true
+            showExceptions true
+            showStackTraces true
+        }
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    task javadocJar(type: Jar) {
+        classifier = 'javadoc'
+        from "$buildDir/docs/javadoc"
+    }
+
+    tasks.withType(GenerateModuleMetadata) {
+        enabled = false
+    }
+}
+
+def PNI_API_VERSION = '21.0.0.8'
+
+project(':template') {
+    dependencies {
+        implementation 'io.vproxy:pni-api-jdk21:' + PNI_API_VERSION
+    }
+    compileJava {
+        options.compilerArgs += '-parameters'
+    }
+    task pniClean(type: Exec) {
+        workingDir project.rootProject.rootDir.getAbsolutePath() + '/core/src/main/'
+        commandLine 'bash', '-c', 'rm -rf c-generated/* && rm -rf generated/*'
+    }
+    task pniGenerate(type: Exec) {
+        workingDir project.rootProject.rootDir.getAbsolutePath()
+        commandLine('java', '-jar', 'misc/pni.jar',
+                '-cp', 'template/build/classes/java/main',
+                '-d', 'core/src/main/generated',
+                '-h', 'core/src/main/c-generated')
+
+        dependsOn pniClean
+        dependsOn compileJava
+    }
+    task pniCompile(type: Exec) {
+        workingDir project.rootProject.rootDir.getAbsolutePath() + '/core/src/main/c'
+        commandLine './make.sh'
+
+        dependsOn pniGenerate
+    }
+}
+
+project(':core') {
+    sourceSets {
+        main {
+            java {
+                srcDirs = ['src/main/java', 'src/main/generated']
+            }
+        }
+    }
+    dependencies {
+        api 'io.vproxy:pni-api-jdk21:' + PNI_API_VERSION
+    }
+}
+
+project(':tutorial-template') {
+    compileJava {
+        options.compilerArgs += '-parameters'
+    }
+    dependencies {
+        implementation 'io.vproxy:pni-api-jdk21:' + PNI_API_VERSION
+        implementation project(':template')
+    }
+    task pniCleanTutorial(type: Exec) {
+        workingDir project.rootProject.rootDir.getAbsolutePath() + '/tutorial/src/main/'
+        commandLine 'bash', '-c', 'rm -rf c-generated/* && rm -rf generated/*'
+    }
+    task pniGenerateTutorial(type: Exec) {
+        workingDir project.rootProject.rootDir.getAbsolutePath()
+        commandLine('java', '-jar', 'misc/pni.jar',
+                '-cp', 'tutorial-template/build/classes/java/main:template/build/classes/java/main',
+                '-d', 'tutorial/src/main/generated',
+                '-h', 'tutorial/src/main/c-generated',
+                '-f', 'io\\.vproxy\\.luajn\\.tutorial\\..*')
+
+        dependsOn pniCleanTutorial
+        dependsOn project(':template').tasks.pniGenerate
+        dependsOn compileJava
+    }
+    task pniCompileTutorial(type: Exec) {
+        workingDir project.rootProject.rootDir.getAbsolutePath() + '/tutorial/src/main/c'
+        commandLine './make.sh'
+
+        dependsOn project(':template').tasks.pniCompile
+        dependsOn pniGenerateTutorial
+    }
+}
+
+project(':tutorial') {
+    sourceSets {
+        main {
+            java {
+                srcDirs = ['src/main/java', 'src/main/generated']
+            }
+        }
+    }
+    dependencies {
+        implementation project(':core')
+    }
+    task runTutorial(type: JavaExec) {
+        standardInput = System.in
+
+        classpath = sourceSets.main.runtimeClasspath
+        environment("LUA_PATH", project.rootProject.rootDir.getAbsolutePath() + "/core/src/main/lua/?.lua")
+        jvmArgs += '-Djava.library.path=' +
+                project.rootProject.rootDir.getAbsolutePath() + '/core/src/main/c' +
+                File.pathSeparator +
+                project.rootProject.rootDir.getAbsolutePath() + '/tutorial/src/main/c' +
+                File.pathSeparator +
+                System.getenv("LUA_LD")
+        def id = System.getProperty("id", "null")
+        if (id.length() < 2) {
+            id = "0" + id
+        }
+        mainClass = 'io.vproxy.luajn.tutorial.Tutorial' + id
+
+        dependsOn compileJava
+        dependsOn project(':template').tasks.pniCompile
+        dependsOn project(':tutorial-template').tasks.pniCompileTutorial
+    }
+}
+
+project(':unittest') {
+    dependencies {
+        implementation 'io.vproxy:pni-api-jdk21:' + PNI_API_VERSION
+        implementation project(':core')
+        testImplementation 'junit:junit:4.13.2'
+    }
+    task runUnitTest(type: Test) {
+        environment("LUA_PATH", project.rootProject.rootDir.getAbsolutePath() + "/core/src/main/lua/?.lua")
+        jvmArgs += '-Djava.library.path=' +
+                project.rootProject.rootDir.getAbsolutePath() + '/core/src/main/c' +
+                File.pathSeparator +
+                project.rootProject.rootDir.getAbsolutePath() + '/tutorial/src/main/c' +
+                File.pathSeparator +
+                System.getenv("LUA_LD")
+        include '**/Suite.class'
+
+        dependsOn project(':template').pniCompile
+    }
+
+    task runUnitTestNoCompile(type: Test) {
+        environment("LUA_PATH", project.rootProject.rootDir.getAbsolutePath() + "/core/src/main/lua/?.lua")
+        jvmArgs += '-Djava.library.path=' +
+                project.rootProject.rootDir.getAbsolutePath() + '/core/src/main/c' +
+                File.pathSeparator +
+                System.getenv("LUA_LD")
+        include '**/Suite.class'
+    }
+}

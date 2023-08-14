@@ -4,6 +4,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
+    id 'me.champeau.jmh' version "0.7.1" apply false
 }
 
 group = 'io.vproxy'
@@ -203,5 +204,67 @@ project(':unittest') {
                 File.pathSeparator +
                 System.getenv("LUA_LD")
         include '**/Suite.class'
+    }
+}
+
+project(':benchmark-template') {
+    dependencies {
+        implementation 'io.vproxy:pni-api-jdk21:' + PNI_API_VERSION
+    }
+    compileJava {
+        options.compilerArgs += '-parameters'
+    }
+    task pniCleanBenchmark(type: Exec) {
+        workingDir project.rootProject.rootDir.getAbsolutePath() + '/benchmark/src/main/'
+        commandLine 'bash', '-c', 'rm -rf c-generated/* && rm -rf generated/*'
+    }
+    task pniGenerateBenchmark(type: Exec) {
+        workingDir project.rootProject.rootDir.getAbsolutePath()
+        commandLine('java', '-jar', 'misc/pni.jar',
+                '-cp', 'benchmark-template/build/classes/java/main:template/build/classes/java/main',
+                '-d', 'benchmark/src/main/generated',
+                '-h', 'benchmark/src/main/c-generated',
+                '-f', 'io\\.vproxy\\.luajn\\.benchmark\\..*')
+
+        dependsOn pniCleanBenchmark
+        dependsOn project(':template').tasks.pniGenerate
+        dependsOn compileJava
+    }
+    task pniCompileBenchmark(type: Exec) {
+        workingDir project.rootProject.rootDir.getAbsolutePath() + '/benchmark/src/main/c'
+        commandLine './make.sh'
+
+        dependsOn project(':template').tasks.pniCompile
+        dependsOn pniGenerateBenchmark
+    }
+}
+
+project(':benchmark') {
+    apply plugin: 'me.champeau.jmh'
+    sourceSets {
+        main {
+            java {
+                srcDirs = ['src/main/java', 'src/main/generated']
+                destinationDirectory.set(file('build/classes/java/jmh'))
+            }
+        }
+    }
+    jmhRunBytecodeGenerator {
+        getJvmArgs().addAll(["--enable-preview", "--enable-native-access=ALL-UNNAMED"])
+    }
+    jmh {
+        environment.put("LUA_PATH", project.rootProject.rootDir.getAbsolutePath() + "/core/src/main/lua/?.lua")
+        jvmArgs = ['-Djava.library.path=' +
+                           project.rootProject.rootDir.getAbsolutePath() + '/core/src/main/c' +
+                           File.pathSeparator +
+                           project.rootProject.rootDir.getAbsolutePath() + '/benchmark/src/main/c' +
+                           File.pathSeparator +
+                           System.getenv("LUA_LD")]
+    }
+    tasks.jmh.dependsOn project(':template').pniCompile
+    tasks.jmh.dependsOn project(':benchmark-template').pniCompileBenchmark
+    dependencies {
+        implementation project(':core')
+        implementation 'org.openjdk.jmh:jmh-generator-annprocess:1.37'
     }
 }

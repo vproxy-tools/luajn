@@ -4,4 +4,6 @@ include 'core'
 include 'tutorial'
 include 'tutorial-template'
 include 'unittest'
+include 'benchmark'
+include 'benchmark-template'
 

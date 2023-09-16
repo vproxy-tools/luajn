@@ -5,11 +5,6 @@ fi
 
 error=0
 
-if [[ -z "$JAVA_HOME" ]]; then
-  echo "You must set JAVA_HOME properly"
-	error=1
-fi
-
 if [[ -z "$LUA_INC" ]]; then
   echo "You must set LUA_INC properly, where the lua includ files is located"
 	error=1
@@ -66,8 +61,6 @@ do
   echo "compiling $cname to $target"
   gcc -std=gnu99 -O2 \
     $GCC_OPTS \
-    -I "$JAVA_HOME/include" \
-    -I "$JAVA_HOME/include/$include_platform_dir" \
     -I "$LUA_INC" \
     -I "../../../../misc" \
     -I "../c-generated" \

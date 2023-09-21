@@ -1,11 +1,26 @@
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
+buildscript {
+    def PNI_VERSION = '21.0.0.15'
+    ext.set("PNI_VERSION", PNI_VERSION)
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'io.vproxy', name: 'pni-exec', version: PNI_VERSION
+    }
+}
+
 plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
     id 'me.champeau.jmh' version "0.7.1" apply false
 }
+
+def PNI_API_VERSION = project.PNI_VERSION
 
 group = 'io.vproxy'
 version = '1.0-SNAPSHOT'
@@ -67,8 +82,6 @@ subprojects {
     }
 }
 
-def PNI_API_VERSION = '21.0.0.8'
-
 project(':template') {
     dependencies {
         implementation 'io.vproxy:pni-api-jdk21:' + PNI_API_VERSION
@@ -80,15 +93,20 @@ project(':template') {
         workingDir project.rootProject.rootDir.getAbsolutePath() + '/core/src/main/'
         commandLine 'bash', '-c', 'rm -rf c-generated/* && rm -rf generated/*'
     }
-    task pniGenerate(type: Exec) {
-        workingDir project.rootProject.rootDir.getAbsolutePath()
-        commandLine('java', '-jar', 'misc/pni.jar',
-                '-cp', 'template/build/classes/java/main',
-                '-d', 'core/src/main/generated',
-                '-h', 'core/src/main/c-generated')
-
-        dependsOn pniClean
+    task pniGenerate() {
         dependsOn compileJava
+
+        def workingDir = project.rootProject.rootDir.getAbsolutePath()
+        def gen = new io.vproxy.pni.exec.Generator(
+            new io.vproxy.pni.exec.CompilerOptions()
+                .setClasspath(List.of(workingDir + '/template/build/classes/java/main'))
+                .setJavaOutputBaseDirectory(workingDir + '/core/src/main/generated')
+                .setCOutputDirectory(workingDir + '/core/src/main/c-generated')
+        )
+
+        doLast {
+            gen.generate()
+        }
     }
     task pniCompile(type: Exec) {
         workingDir project.rootProject.rootDir.getAbsolutePath() + '/core/src/main/c'
@@ -123,15 +141,25 @@ project(':tutorial-template') {
         workingDir project.rootProject.rootDir.getAbsolutePath() + '/tutorial/src/main/'
         commandLine 'bash', '-c', 'rm -rf c-generated/* && rm -rf generated/*'
     }
-    task pniGenerateTutorial(type: Exec) {
-        workingDir project.rootProject.rootDir.getAbsolutePath()
-        commandLine('java', '-jar', 'misc/pni.jar',
-                '-cp', 'tutorial-template/build/classes/java/main:template/build/classes/java/main',
-                '-d', 'tutorial/src/main/generated',
-                '-h', 'tutorial/src/main/c-generated',
-                '-f', 'io\\.vproxy\\.luajn\\.tutorial\\..*')
+    task pniGenerateTutorial() {
+        def workingDir = project.rootProject.rootDir.getAbsolutePath()
+        def gen = new io.vproxy.pni.exec.Generator(
+            new io.vproxy.pni.exec.CompilerOptions()
+                .setClasspath(List.of(
+                    workingDir + '/tutorial-template/build/classes/java/main',
+                    workingDir + '/template/build/classes/java/main'
+                ))
+                .setJavaOutputBaseDirectory(workingDir + '/tutorial/src/main/generated')
+                .setCOutputDirectory(workingDir + '/tutorial/src/main/c-generated')
+                .setFilters(List.of(
+                    java.util.regex.Pattern.compile('io\\.vproxy\\.luajn\\.tutorial\\..*')
+                ))
+        )
 
-        dependsOn pniCleanTutorial
+        doLast {
+            gen.generate()
+        }
+
         dependsOn project(':template').tasks.pniGenerate
         dependsOn compileJava
     }
@@ -218,15 +246,25 @@ project(':benchmark-template') {
         workingDir project.rootProject.rootDir.getAbsolutePath() + '/benchmark/src/main/'
         commandLine 'bash', '-c', 'rm -rf c-generated/* && rm -rf generated/*'
     }
-    task pniGenerateBenchmark(type: Exec) {
-        workingDir project.rootProject.rootDir.getAbsolutePath()
-        commandLine('java', '-jar', 'misc/pni.jar',
-                '-cp', 'benchmark-template/build/classes/java/main:template/build/classes/java/main',
-                '-d', 'benchmark/src/main/generated',
-                '-h', 'benchmark/src/main/c-generated',
-                '-f', 'io\\.vproxy\\.luajn\\.benchmark\\..*')
+    task pniGenerateBenchmark() {
+        def workingDir = project.rootProject.rootDir.getAbsolutePath()
+        def gen = new io.vproxy.pni.exec.Generator(
+            new io.vproxy.pni.exec.CompilerOptions()
+                .setClasspath(List.of(
+                    workingDir + '/benchmark-template/build/classes/java/main',
+                    workingDir + '/template/build/classes/java/main',
+                ))
+                .setJavaOutputBaseDirectory(workingDir + '/benchmark/src/main/generated')
+                .setCOutputDirectory(workingDir + '/benchmark/src/main/c-generated')
+                .setFilters(List.of(
+                    java.util.regex.Pattern.compile('io\\.vproxy\\.luajn\\.benchmark\\..*')
+                ))
+        )
 
-        dependsOn pniCleanBenchmark
+        doLast {
+            gen.generate()
+        }
+
         dependsOn project(':template').tasks.pniGenerate
         dependsOn compileJava
     }

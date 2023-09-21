@@ -18,11 +18,14 @@ extern "C" {
 extern "C" {
 #endif
 
+JNIEXPORT size_t JNICALL JavaCritical_io_vproxy_luajn_n_LuaDebug___getLayoutByteSize();
+
 PNIEnvExpand(lua_Debug, lua_Debug *)
+PNIBufExpand(lua_Debug, lua_Debug, JavaCritical_io_vproxy_luajn_n_LuaDebug___getLayoutByteSize())
 
 #ifdef __cplusplus
 }
 #endif
 #endif // _Included_io_vproxy_luajn_n_LuaDebug
-// metadata.generator-version: pni 21.0.0.8
-// sha256:a0ba0f49b23aa62e1358ddf3a4ca4ea13e73c3756d0f9e77524cb5debc82982e
+// metadata.generator-version: pni 21.0.0.12
+// sha256:cfe5187d45bc2a2afdd7d441dec8b5ae804881e37ee26d61e33c2148cdb56b32

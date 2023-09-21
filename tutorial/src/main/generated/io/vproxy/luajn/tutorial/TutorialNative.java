@@ -6,13 +6,18 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import java.nio.ByteBuffer;
 
-public class TutorialNative {
+public class TutorialNative extends AbstractNativeObject implements NativeObject {
     public static final MemoryLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.JAVA_INT_UNALIGNED.withName("intValue"),
+        ValueLayout.JAVA_INT.withName("intValue"),
         MemoryLayout.sequenceLayout(4L, ValueLayout.JAVA_BYTE) /* padding */,
-        ValueLayout.JAVA_LONG_UNALIGNED.withName("longValue")
-    );
+        ValueLayout.JAVA_LONG.withName("longValue")
+    ).withByteAlignment(8);
     public final MemorySegment MEMORY;
+
+    @Override
+    public MemorySegment MEMORY() {
+        return MEMORY;
+    }
 
     private static final VarHandle intValueVH = LAYOUT.varHandle(
         MemoryLayout.PathElement.groupElement("intValue")
@@ -48,7 +53,7 @@ public class TutorialNative {
     }
 
     public TutorialNative(Allocator ALLOCATOR) {
-        this(ALLOCATOR.allocate(LAYOUT.byteSize()));
+        this(ALLOCATOR.allocate(LAYOUT));
     }
 
     private static final MethodHandle dummyPlaceHolderForGeneratingImplHFileMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_tutorial_TutorialNative_dummyPlaceHolderForGeneratingImplHFile", MemorySegment.class /* self */);
@@ -61,17 +66,47 @@ public class TutorialNative {
         }
     }
 
+    @Override
+    public void toString(StringBuilder SB, int INDENT, java.util.Set<NativeObjectTuple> VISITED, boolean CORRUPTED_MEMORY) {
+        if (!VISITED.add(new NativeObjectTuple(this))) {
+            SB.append("<...>@").append(Long.toString(MEMORY.address(), 16));
+            return;
+        }
+        SB.append("TutorialNative{\n");
+        {
+            SB.append(" ".repeat(INDENT + 4)).append("intValue => ");
+            SB.append(getIntValue());
+        }
+        SB.append(",\n");
+        {
+            SB.append(" ".repeat(INDENT + 4)).append("longValue => ");
+            SB.append(getLongValue());
+        }
+        SB.append("\n");
+        SB.append(" ".repeat(INDENT)).append("}@").append(Long.toString(MEMORY.address(), 16));
+    }
+
     public static class Array extends RefArray<TutorialNative> {
         public Array(MemorySegment buf) {
             super(buf, TutorialNative.LAYOUT);
         }
 
         public Array(Allocator allocator, long len) {
-            this(allocator.allocate(TutorialNative.LAYOUT.byteSize() * len));
+            super(allocator, TutorialNative.LAYOUT, len);
         }
 
         public Array(PNIBuf buf) {
-            this(buf.get());
+            super(buf, TutorialNative.LAYOUT);
+        }
+
+        @Override
+        protected void elementToString(io.vproxy.luajn.tutorial.TutorialNative ELEM, StringBuilder SB, int INDENT, java.util.Set<NativeObjectTuple> VISITED, boolean CORRUPTED_MEMORY) {
+            ELEM.toString(SB, INDENT, VISITED, CORRUPTED_MEMORY);
+        }
+
+        @Override
+        protected String toStringTypeName() {
+            return "TutorialNative.Array";
         }
 
         @Override
@@ -90,6 +125,10 @@ public class TutorialNative {
             super(func);
         }
 
+        private Func(io.vproxy.pni.CallSite<TutorialNative> func, Options opts) {
+            super(func, opts);
+        }
+
         private Func(MemorySegment MEMORY) {
             super(MEMORY);
         }
@@ -98,8 +137,17 @@ public class TutorialNative {
             return new Func(func);
         }
 
+        public static Func of(io.vproxy.pni.CallSite<TutorialNative> func, Options opts) {
+            return new Func(func, opts);
+        }
+
         public static Func of(MemorySegment MEMORY) {
             return new Func(MEMORY);
+        }
+
+        @Override
+        protected String toStringTypeName() {
+            return "TutorialNative.Func";
         }
 
         @Override
@@ -108,5 +156,5 @@ public class TutorialNative {
         }
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:97b9f307bbd1360b2e5eaa800267e5846e2c551287c32633652e2a1ec2a75d83
+// metadata.generator-version: pni 21.0.0.15
+// sha256:c15775ada310a3cc7bc03e1f256238850c15c486ed5db867109d3b6cf4efe08c

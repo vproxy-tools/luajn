@@ -66,6 +66,6 @@ do
     -I "../c-generated" \
     -L "$LUA_LD/" \
     -shared -Werror -lc -l$LUA_LIB -fPIC \
-    "$cname" \
+    "$cname" "../c-generated/io_vproxy_luajn_n_LuaDebug.extra.c" \
     -o "$target"
 done

@@ -25,10 +25,11 @@ extern "C" {
 #endif
 
 PNIEnvExpand(LuaState, LuaState *)
+PNIBufExpand(LuaState, LuaState, 8)
 
-PNI_PACK(struct, LuaState, {
+struct LuaState {
     void * L;
-});
+};
 
 JNIEXPORT void JNICALL JavaCritical_io_vproxy_luajn_n_LuaState_close(LuaState * self);
 JNIEXPORT void JNICALL JavaCritical_io_vproxy_luajn_n_LuaState_call(LuaState * self, int32_t nargs, int32_t nresults);
@@ -108,5 +109,5 @@ JNIEXPORT int32_t JNICALL JavaCritical_io_vproxy_luajn_n_LuaState_type(LuaState 
 }
 #endif
 #endif // _Included_io_vproxy_luajn_n_LuaState
-// metadata.generator-version: pni 21.0.0.8
-// sha256:b1a60d46159ab9e4ab1fb0c4e989ddadd7d065198838f086768027cb4f1d297f
+// metadata.generator-version: pni 21.0.0.13
+// sha256:69bf6ccf49bc466e0a74e0f211dba84cd54f3bc6681b2de1a9fb029301c229c3

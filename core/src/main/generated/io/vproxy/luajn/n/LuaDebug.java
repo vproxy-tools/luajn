@@ -6,22 +6,39 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import java.nio.ByteBuffer;
 
-public class LuaDebug {
-    public static final MemoryLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.JAVA_INT_UNALIGNED.withName("event"),
+public class LuaDebug extends AbstractNativeObject implements NativeObject {
+    private static final MethodHandle __getLayoutByteSizeMH = PanamaUtils.lookupPNICriticalFunction(true, long.class, "JavaCritical_io_vproxy_luajn_n_LuaDebug___getLayoutByteSize");
+
+    private static long __getLayoutByteSize() {
+        long RESULT;
+        try {
+            RESULT = (long) __getLayoutByteSizeMH.invokeExact();
+        } catch (Throwable THROWABLE) {
+            throw PanamaUtils.convertInvokeExactException(THROWABLE);
+        }
+        return RESULT;
+    }
+
+    public static final MemoryLayout LAYOUT = PanamaUtils.padLayout(__getLayoutByteSize(), MemoryLayout::structLayout,
+        ValueLayout.JAVA_INT.withName("event"),
         MemoryLayout.sequenceLayout(4L, ValueLayout.JAVA_BYTE) /* padding */,
-        ValueLayout.ADDRESS_UNALIGNED.withName("name"),
-        ValueLayout.ADDRESS_UNALIGNED.withName("nameWhat"),
-        ValueLayout.ADDRESS_UNALIGNED.withName("what"),
-        ValueLayout.ADDRESS_UNALIGNED.withName("source"),
-        ValueLayout.JAVA_INT_UNALIGNED.withName("currentLine"),
-        ValueLayout.JAVA_INT_UNALIGNED.withName("nUps"),
-        ValueLayout.JAVA_INT_UNALIGNED.withName("lineDefined"),
-        ValueLayout.JAVA_INT_UNALIGNED.withName("lastLineDefined"),
+        ValueLayout.ADDRESS.withName("name"),
+        ValueLayout.ADDRESS.withName("nameWhat"),
+        ValueLayout.ADDRESS.withName("what"),
+        ValueLayout.ADDRESS.withName("source"),
+        ValueLayout.JAVA_INT.withName("currentLine"),
+        ValueLayout.JAVA_INT.withName("nUps"),
+        ValueLayout.JAVA_INT.withName("lineDefined"),
+        ValueLayout.JAVA_INT.withName("lastLineDefined"),
         MemoryLayout.sequenceLayout(60L, ValueLayout.JAVA_BYTE).withName("shortSrc"),
         MemoryLayout.sequenceLayout(4L, ValueLayout.JAVA_BYTE) /* padding */
-    );
+    ).withByteAlignment(8);
     public final MemorySegment MEMORY;
+
+    @Override
+    public MemorySegment MEMORY() {
+        return MEMORY;
+    }
 
     private static final VarHandle eventVH = LAYOUT.varHandle(
         MemoryLayout.PathElement.groupElement("event")
@@ -197,7 +214,72 @@ public class LuaDebug {
     }
 
     public LuaDebug(Allocator ALLOCATOR) {
-        this(ALLOCATOR.allocate(LAYOUT.byteSize()));
+        this(ALLOCATOR.allocate(LAYOUT));
+    }
+
+    @Override
+    public void toString(StringBuilder SB, int INDENT, java.util.Set<NativeObjectTuple> VISITED, boolean CORRUPTED_MEMORY) {
+        if (!VISITED.add(new NativeObjectTuple(this))) {
+            SB.append("<...>@").append(Long.toString(MEMORY.address(), 16));
+            return;
+        }
+        SB.append("LuaDebug{\n");
+        {
+            SB.append(" ".repeat(INDENT + 4)).append("event => ");
+            SB.append(getEvent());
+        }
+        SB.append(",\n");
+        {
+            SB.append(" ".repeat(INDENT + 4)).append("name => ");
+            if (CORRUPTED_MEMORY) SB.append("<?>");
+            else PanamaUtils.nativeObjectToString(getName(), SB, INDENT + 4, VISITED, CORRUPTED_MEMORY);
+        }
+        SB.append(",\n");
+        {
+            SB.append(" ".repeat(INDENT + 4)).append("nameWhat => ");
+            if (CORRUPTED_MEMORY) SB.append("<?>");
+            else PanamaUtils.nativeObjectToString(getNameWhat(), SB, INDENT + 4, VISITED, CORRUPTED_MEMORY);
+        }
+        SB.append(",\n");
+        {
+            SB.append(" ".repeat(INDENT + 4)).append("what => ");
+            if (CORRUPTED_MEMORY) SB.append("<?>");
+            else PanamaUtils.nativeObjectToString(getWhat(), SB, INDENT + 4, VISITED, CORRUPTED_MEMORY);
+        }
+        SB.append(",\n");
+        {
+            SB.append(" ".repeat(INDENT + 4)).append("source => ");
+            if (CORRUPTED_MEMORY) SB.append("<?>");
+            else PanamaUtils.nativeObjectToString(getSource(), SB, INDENT + 4, VISITED, CORRUPTED_MEMORY);
+        }
+        SB.append(",\n");
+        {
+            SB.append(" ".repeat(INDENT + 4)).append("currentLine => ");
+            SB.append(getCurrentLine());
+        }
+        SB.append(",\n");
+        {
+            SB.append(" ".repeat(INDENT + 4)).append("nUps => ");
+            SB.append(getNUps());
+        }
+        SB.append(",\n");
+        {
+            SB.append(" ".repeat(INDENT + 4)).append("lineDefined => ");
+            SB.append(getLineDefined());
+        }
+        SB.append(",\n");
+        {
+            SB.append(" ".repeat(INDENT + 4)).append("lastLineDefined => ");
+            SB.append(getLastLineDefined());
+        }
+        SB.append(",\n");
+        {
+            SB.append(" ".repeat(INDENT + 4)).append("shortSrc => ");
+            if (CORRUPTED_MEMORY) SB.append("<?>");
+            else SB.append(PanamaUtils.memorySegmentToString(getShortSrc()));
+        }
+        SB.append("\n");
+        SB.append(" ".repeat(INDENT)).append("}@").append(Long.toString(MEMORY.address(), 16));
     }
 
     public static class Array extends RefArray<LuaDebug> {
@@ -206,11 +288,21 @@ public class LuaDebug {
         }
 
         public Array(Allocator allocator, long len) {
-            this(allocator.allocate(LuaDebug.LAYOUT.byteSize() * len));
+            super(allocator, LuaDebug.LAYOUT, len);
         }
 
         public Array(PNIBuf buf) {
-            this(buf.get());
+            super(buf, LuaDebug.LAYOUT);
+        }
+
+        @Override
+        protected void elementToString(io.vproxy.luajn.n.LuaDebug ELEM, StringBuilder SB, int INDENT, java.util.Set<NativeObjectTuple> VISITED, boolean CORRUPTED_MEMORY) {
+            ELEM.toString(SB, INDENT, VISITED, CORRUPTED_MEMORY);
+        }
+
+        @Override
+        protected String toStringTypeName() {
+            return "LuaDebug.Array";
         }
 
         @Override
@@ -229,6 +321,10 @@ public class LuaDebug {
             super(func);
         }
 
+        private Func(io.vproxy.pni.CallSite<LuaDebug> func, Options opts) {
+            super(func, opts);
+        }
+
         private Func(MemorySegment MEMORY) {
             super(MEMORY);
         }
@@ -237,8 +333,17 @@ public class LuaDebug {
             return new Func(func);
         }
 
+        public static Func of(io.vproxy.pni.CallSite<LuaDebug> func, Options opts) {
+            return new Func(func, opts);
+        }
+
         public static Func of(MemorySegment MEMORY) {
             return new Func(MEMORY);
+        }
+
+        @Override
+        protected String toStringTypeName() {
+            return "LuaDebug.Func";
         }
 
         @Override
@@ -247,5 +352,5 @@ public class LuaDebug {
         }
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:16eb9c5da3e2871e27fd0beca04c05184e8d483566d104ca54f8b886c2ef0c1a
+// metadata.generator-version: pni 21.0.0.15
+// sha256:df4c8255bb966fc5b422a127c84648b54e002faa8e1d01cd5389ddded1342308

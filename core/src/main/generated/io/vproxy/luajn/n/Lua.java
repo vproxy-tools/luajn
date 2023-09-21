@@ -21,7 +21,7 @@ public class Lua {
     public io.vproxy.luajn.n.LuaState newState(Allocator ALLOCATOR) {
         MemorySegment RESULT;
         try {
-            RESULT = (MemorySegment) newStateMH.invokeExact(ALLOCATOR.allocate(io.vproxy.luajn.n.LuaState.LAYOUT.byteSize()));
+            RESULT = (MemorySegment) newStateMH.invokeExact(ALLOCATOR.allocate(io.vproxy.luajn.n.LuaState.LAYOUT));
         } catch (Throwable THROWABLE) {
             throw PanamaUtils.convertInvokeExactException(THROWABLE);
         }
@@ -34,7 +34,7 @@ public class Lua {
     public io.vproxy.luajn.n.LuaState newState2(MemorySegment allocF, MemorySegment ud, Allocator ALLOCATOR) {
         MemorySegment RESULT;
         try {
-            RESULT = (MemorySegment) newState2MH.invokeExact((MemorySegment) (allocF == null ? MemorySegment.NULL : allocF), (MemorySegment) (ud == null ? MemorySegment.NULL : ud), ALLOCATOR.allocate(io.vproxy.luajn.n.LuaState.LAYOUT.byteSize()));
+            RESULT = (MemorySegment) newState2MH.invokeExact((MemorySegment) (allocF == null ? MemorySegment.NULL : allocF), (MemorySegment) (ud == null ? MemorySegment.NULL : ud), ALLOCATOR.allocate(io.vproxy.luajn.n.LuaState.LAYOUT));
         } catch (Throwable THROWABLE) {
             throw PanamaUtils.convertInvokeExactException(THROWABLE);
         }
@@ -47,7 +47,7 @@ public class Lua {
     public io.vproxy.luajn.n.LuaState initState(MemorySegment _L, Allocator ALLOCATOR) {
         MemorySegment RESULT;
         try {
-            RESULT = (MemorySegment) initStateMH.invokeExact((MemorySegment) (_L == null ? MemorySegment.NULL : _L), ALLOCATOR.allocate(io.vproxy.luajn.n.LuaState.LAYOUT.byteSize()));
+            RESULT = (MemorySegment) initStateMH.invokeExact((MemorySegment) (_L == null ? MemorySegment.NULL : _L), ALLOCATOR.allocate(io.vproxy.luajn.n.LuaState.LAYOUT));
         } catch (Throwable THROWABLE) {
             throw PanamaUtils.convertInvokeExactException(THROWABLE);
         }
@@ -97,7 +97,7 @@ public class Lua {
     public io.vproxy.luajn.n.LuaState newThread(io.vproxy.luajn.n.LuaState _L, Allocator ALLOCATOR) {
         MemorySegment RESULT;
         try {
-            RESULT = (MemorySegment) newThreadMH.invokeExact((MemorySegment) (_L == null ? MemorySegment.NULL : _L.MEMORY), ALLOCATOR.allocate(io.vproxy.luajn.n.LuaState.LAYOUT.byteSize()));
+            RESULT = (MemorySegment) newThreadMH.invokeExact((MemorySegment) (_L == null ? MemorySegment.NULL : _L.MEMORY), ALLOCATOR.allocate(io.vproxy.luajn.n.LuaState.LAYOUT));
         } catch (Throwable THROWABLE) {
             throw PanamaUtils.convertInvokeExactException(THROWABLE);
         }
@@ -254,5 +254,5 @@ public class Lua {
         return RESULT;
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:1552a13d28ae4dc43bedc11279940bcc2f455c647fc2b56dfcae7747a2ccd83f
+// metadata.generator-version: pni 21.0.0.15
+// sha256:e1002952ffeb1813b59a6e925704ef100450135c4700ebde54082281d8cc58c6

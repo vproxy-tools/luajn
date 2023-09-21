@@ -24,11 +24,12 @@ extern "C" {
 #endif
 
 PNIEnvExpand(TutorialNative, TutorialNative *)
+PNIBufExpand(TutorialNative, TutorialNative, 16)
 
-PNI_PACK(struct, TutorialNative, {
-    int32_t intValue; /* padding */ uint64_t :32;
+struct TutorialNative {
+    int32_t intValue;
     int64_t longValue;
-});
+};
 
 JNIEXPORT void JNICALL JavaCritical_io_vproxy_luajn_tutorial_TutorialNative_dummyPlaceHolderForGeneratingImplHFile(TutorialNative * self);
 
@@ -36,5 +37,5 @@ JNIEXPORT void JNICALL JavaCritical_io_vproxy_luajn_tutorial_TutorialNative_dumm
 }
 #endif
 #endif // _Included_io_vproxy_luajn_tutorial_TutorialNative
-// metadata.generator-version: pni 21.0.0.8
-// sha256:2ecffc2e9ade632c2b9983b3466373eb2d8da937c648f775164378b52b54b596
+// metadata.generator-version: pni 21.0.0.13
+// sha256:c7e09ed03658a691d0faf7366e3d0db35f591acd4177e71d7ab39e496744c998

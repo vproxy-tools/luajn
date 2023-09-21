@@ -6,11 +6,16 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import java.nio.ByteBuffer;
 
-public class LuaState {
+public class LuaState extends AbstractNativeObject implements NativeObject {
     public static final MemoryLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.ADDRESS_UNALIGNED.withName("L")
-    );
+        ValueLayout.ADDRESS.withName("L")
+    ).withByteAlignment(8);
     public final MemorySegment MEMORY;
+
+    @Override
+    public MemorySegment MEMORY() {
+        return MEMORY;
+    }
 
     private static final VarHandle LVH = LAYOUT.varHandle(
         MemoryLayout.PathElement.groupElement("L")
@@ -38,7 +43,7 @@ public class LuaState {
     }
 
     public LuaState(Allocator ALLOCATOR) {
-        this(ALLOCATOR.allocate(LAYOUT.byteSize()));
+        this(ALLOCATOR.allocate(LAYOUT));
     }
 
     private static final MethodHandle closeMH = PanamaUtils.lookupPNICriticalFunction(false, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_close", MemorySegment.class /* self */);
@@ -819,7 +824,7 @@ public class LuaState {
     public io.vproxy.luajn.n.LuaState toThread(int index, Allocator ALLOCATOR) {
         MemorySegment RESULT;
         try {
-            RESULT = (MemorySegment) toThreadMH.invokeExact(MEMORY, index, ALLOCATOR.allocate(io.vproxy.luajn.n.LuaState.LAYOUT.byteSize()));
+            RESULT = (MemorySegment) toThreadMH.invokeExact(MEMORY, index, ALLOCATOR.allocate(io.vproxy.luajn.n.LuaState.LAYOUT));
         } catch (Throwable THROWABLE) {
             throw PanamaUtils.convertInvokeExactException(THROWABLE);
         }
@@ -852,17 +857,42 @@ public class LuaState {
         return RESULT;
     }
 
+    @Override
+    public void toString(StringBuilder SB, int INDENT, java.util.Set<NativeObjectTuple> VISITED, boolean CORRUPTED_MEMORY) {
+        if (!VISITED.add(new NativeObjectTuple(this))) {
+            SB.append("<...>@").append(Long.toString(MEMORY.address(), 16));
+            return;
+        }
+        SB.append("LuaState{\n");
+        {
+            SB.append(" ".repeat(INDENT + 4)).append("L => ");
+            SB.append(PanamaUtils.memorySegmentToString(getL()));
+        }
+        SB.append("\n");
+        SB.append(" ".repeat(INDENT)).append("}@").append(Long.toString(MEMORY.address(), 16));
+    }
+
     public static class Array extends RefArray<LuaState> {
         public Array(MemorySegment buf) {
             super(buf, LuaState.LAYOUT);
         }
 
         public Array(Allocator allocator, long len) {
-            this(allocator.allocate(LuaState.LAYOUT.byteSize() * len));
+            super(allocator, LuaState.LAYOUT, len);
         }
 
         public Array(PNIBuf buf) {
-            this(buf.get());
+            super(buf, LuaState.LAYOUT);
+        }
+
+        @Override
+        protected void elementToString(io.vproxy.luajn.n.LuaState ELEM, StringBuilder SB, int INDENT, java.util.Set<NativeObjectTuple> VISITED, boolean CORRUPTED_MEMORY) {
+            ELEM.toString(SB, INDENT, VISITED, CORRUPTED_MEMORY);
+        }
+
+        @Override
+        protected String toStringTypeName() {
+            return "LuaState.Array";
         }
 
         @Override
@@ -881,6 +911,10 @@ public class LuaState {
             super(func);
         }
 
+        private Func(io.vproxy.pni.CallSite<LuaState> func, Options opts) {
+            super(func, opts);
+        }
+
         private Func(MemorySegment MEMORY) {
             super(MEMORY);
         }
@@ -889,8 +923,17 @@ public class LuaState {
             return new Func(func);
         }
 
+        public static Func of(io.vproxy.pni.CallSite<LuaState> func, Options opts) {
+            return new Func(func, opts);
+        }
+
         public static Func of(MemorySegment MEMORY) {
             return new Func(MEMORY);
+        }
+
+        @Override
+        protected String toStringTypeName() {
+            return "LuaState.Func";
         }
 
         @Override
@@ -899,5 +942,5 @@ public class LuaState {
         }
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:cb06f61395d3c9e84d5c866e3343aa309d2f804add7714aaafb0d8f288e2cd3d
+// metadata.generator-version: pni 21.0.0.15
+// sha256:088e278219d459a965aa381a803f98b6dd24265cd922f8aebf6f88d2272c68c0

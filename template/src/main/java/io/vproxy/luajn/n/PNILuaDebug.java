@@ -1,13 +1,12 @@
 package io.vproxy.luajn.n;
 
-import io.vproxy.pni.annotation.Include;
-import io.vproxy.pni.annotation.Len;
-import io.vproxy.pni.annotation.Name;
-import io.vproxy.pni.annotation.Struct;
+import io.vproxy.pni.annotation.*;
 
 @Include("<lua.h>")
 @Struct(skip = true)
+@AlwaysAligned
 @Name("lua_Debug")
+@Sizeof("lua_Debug")
 public class PNILuaDebug {
     int event;
     String name;

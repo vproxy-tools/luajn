@@ -7,6 +7,7 @@ import java.lang.foreign.MemorySegment;
 
 @SuppressWarnings("unused")
 @Struct
+@AlwaysAligned
 @Include({
     "<lua.h>",
     "<lauxlib.h>",

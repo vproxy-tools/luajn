@@ -8,6 +8,7 @@ import io.vproxy.pni.annotation.*;
     "<lualib.h>",
 })
 @Struct
+@AlwaysAligned
 abstract class PNITutorialNative {
     int intValue;
     long longValue;

@@ -23,17 +23,15 @@ high level api encapsulation with unittests.
 
 ## How to compile and test
 
-This project requires `Java 21` to compile and run, and `Java 11 or 17` to build.  
-Why need two JDKs? See [here](https://github.com/vproxy-tools/panama-native-interface#1-install-jdks).
+This project requires `Java 21` to compile and run.  
 
-If you are using Windows, you will need `MinGW UCRT`.
+If you are using Windows, you will need `MinGW UCRT64`.
 
 To make a full compile, you will need `openresty/luajit2`. Also, tutorials require `openresty/luajit2` as well.
 
 Configure you environment variables:
 
-* `JAVA_HOME`: The `JAVA_HOME` for `Java 11 or 17`.
-* `JAVA_HOME_21`: The `JAVA_HOME` for `Java 21`.
+* `JAVA_HOME`: The `JAVA_HOME` for `Java 21`.
 * `LUA_INC`: The directory which contains Lua header files.
 * `LUA_LD`: The directory which contains Lua dynamic library (the directory containing `.so|dylib|dll` file).
 * `LUA_LIB`: The Lua library name, on Linux and macOS, you can extract the name from `lib${name}.so|dylib`; on Windows,
@@ -152,7 +150,8 @@ Also the `PNIFunc` and `PNIRef` can get gc-ed automatically, just like `CallSite
 ---
 
 If you are using `luajit` or you have access to `ffi` libraries, you can generate function pointers using
-`PanamaUtils.defineCFunction` or `PanamaUtils.defineCFunctionByName`, and then pass them to Lua as `lightuserdata`.
+`PanamaUtils.defineCFunction` or `PanamaUtils.defineCFunctionByName`, or use `@Upcall` interfaces,
+and then pass them to Lua as `lightuserdata`.
 
 See
 [Tutorial17](https://github.com/vproxy-tools/luajn/blob/master/tutorial/src/main/java/io/vproxy/luajn/tutorial/Tutorial17.java)

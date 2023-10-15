@@ -16,7 +16,7 @@ public class HelperLuaJIT {
         return INSTANCE;
     }
 
-    private static final MethodHandle LUAJIT_MODE_MASKMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_MASK");
+    private static final MethodHandle LUAJIT_MODE_MASKMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_MASK");
 
     public int LUAJIT_MODE_MASK() {
         int RESULT;
@@ -28,7 +28,7 @@ public class HelperLuaJIT {
         return RESULT;
     }
 
-    private static final MethodHandle LUAJIT_MODE_ENGINEMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_ENGINE");
+    private static final MethodHandle LUAJIT_MODE_ENGINEMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_ENGINE");
 
     public int LUAJIT_MODE_ENGINE() {
         int RESULT;
@@ -40,7 +40,7 @@ public class HelperLuaJIT {
         return RESULT;
     }
 
-    private static final MethodHandle LUAJIT_MODE_DEBUGMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_DEBUG");
+    private static final MethodHandle LUAJIT_MODE_DEBUGMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_DEBUG");
 
     public int LUAJIT_MODE_DEBUG() {
         int RESULT;
@@ -52,7 +52,7 @@ public class HelperLuaJIT {
         return RESULT;
     }
 
-    private static final MethodHandle LUAJIT_MODE_FUNCMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_FUNC");
+    private static final MethodHandle LUAJIT_MODE_FUNCMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_FUNC");
 
     public int LUAJIT_MODE_FUNC() {
         int RESULT;
@@ -64,7 +64,7 @@ public class HelperLuaJIT {
         return RESULT;
     }
 
-    private static final MethodHandle LUAJIT_MODE_ALLFUNCMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_ALLFUNC");
+    private static final MethodHandle LUAJIT_MODE_ALLFUNCMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_ALLFUNC");
 
     public int LUAJIT_MODE_ALLFUNC() {
         int RESULT;
@@ -76,7 +76,7 @@ public class HelperLuaJIT {
         return RESULT;
     }
 
-    private static final MethodHandle LUAJIT_MODE_ALLSUBFUNCMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_ALLSUBFUNC");
+    private static final MethodHandle LUAJIT_MODE_ALLSUBFUNCMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_ALLSUBFUNC");
 
     public int LUAJIT_MODE_ALLSUBFUNC() {
         int RESULT;
@@ -88,7 +88,7 @@ public class HelperLuaJIT {
         return RESULT;
     }
 
-    private static final MethodHandle LUAJIT_MODE_TRACEMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_TRACE");
+    private static final MethodHandle LUAJIT_MODE_TRACEMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_TRACE");
 
     public int LUAJIT_MODE_TRACE() {
         int RESULT;
@@ -100,7 +100,7 @@ public class HelperLuaJIT {
         return RESULT;
     }
 
-    private static final MethodHandle LUAJIT_MODE_WRAPCFUNCMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_WRAPCFUNC");
+    private static final MethodHandle LUAJIT_MODE_WRAPCFUNCMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_WRAPCFUNC");
 
     public int LUAJIT_MODE_WRAPCFUNC() {
         int RESULT;
@@ -112,7 +112,7 @@ public class HelperLuaJIT {
         return RESULT;
     }
 
-    private static final MethodHandle LUAJIT_MODE_MAXMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_MAX");
+    private static final MethodHandle LUAJIT_MODE_MAXMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_MAX");
 
     public int LUAJIT_MODE_MAX() {
         int RESULT;
@@ -124,7 +124,7 @@ public class HelperLuaJIT {
         return RESULT;
     }
 
-    private static final MethodHandle LUAJIT_MODE_OFFMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_OFF");
+    private static final MethodHandle LUAJIT_MODE_OFFMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_OFF");
 
     public int LUAJIT_MODE_OFF() {
         int RESULT;
@@ -136,7 +136,7 @@ public class HelperLuaJIT {
         return RESULT;
     }
 
-    private static final MethodHandle LUAJIT_MODE_ONMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_ON");
+    private static final MethodHandle LUAJIT_MODE_ONMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_ON");
 
     public int LUAJIT_MODE_ON() {
         int RESULT;
@@ -148,7 +148,7 @@ public class HelperLuaJIT {
         return RESULT;
     }
 
-    private static final MethodHandle LUAJIT_MODE_FLUSHMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_FLUSH");
+    private static final MethodHandle LUAJIT_MODE_FLUSHMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_HelperLuaJIT_LUAJIT_MODE_FLUSH");
 
     public int LUAJIT_MODE_FLUSH() {
         int RESULT;
@@ -160,5 +160,5 @@ public class HelperLuaJIT {
         return RESULT;
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:fae8cc27d6964cdb27263f14c1cf7a25f39fd42decb7073668513834044a32e8
+// metadata.generator-version: pni 21.0.0.17
+// sha256:70e06b4e4c82e7ddef28341dc96c051a8afb3be16d74a552cea33d4c2af8d836

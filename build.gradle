@@ -1,7 +1,7 @@
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 buildscript {
-    def PNI_VERSION = '21.0.0.15'
+    def PNI_VERSION = '21.0.0.18'
     ext.set("PNI_VERSION", PNI_VERSION)
 
     repositories {
@@ -101,6 +101,10 @@ project(':template') {
                 .setClasspath(List.of(workingDir + '/template/build/classes/java/main'))
                 .setJavaOutputBaseDirectory(workingDir + '/core/src/main/generated')
                 .setCOutputDirectory(workingDir + '/core/src/main/c-generated')
+                .setCompilationFlag(io.vproxy.pni.exec.CompilationFlag.TYPE_NAME_PREFIX, "PNI")
+                .setCompilationFlag(io.vproxy.pni.exec.CompilationFlag.RELEASE_PNI_H_FILE)
+                .setCompilationFlag(io.vproxy.pni.exec.CompilationFlag.RELEASE_PNI_C_FILE)
+                .setCompilationFlag(io.vproxy.pni.exec.CompilationFlag.RELEASE_JNI_H_MOCK_FILE)
         )
 
         doLast {
@@ -153,6 +157,9 @@ project(':tutorial-template') {
                 .setFilters(List.of(
                     java.util.regex.Pattern.compile('io\\.vproxy\\.luajn\\.tutorial\\..*')
                 ))
+                .setCompilationFlag(io.vproxy.pni.exec.CompilationFlag.TYPE_NAME_PREFIX, "PNI")
+                .setCompilationFlag(io.vproxy.pni.exec.CompilationFlag.RELEASE_PNI_H_FILE)
+                .setCompilationFlag(io.vproxy.pni.exec.CompilationFlag.RELEASE_JNI_H_MOCK_FILE)
         )
 
         doLast {
@@ -258,6 +265,10 @@ project(':benchmark-template') {
                 .setFilters(List.of(
                     java.util.regex.Pattern.compile('io\\.vproxy\\.luajn\\.benchmark\\..*')
                 ))
+                .setCompilationFlag(io.vproxy.pni.exec.CompilationFlag.TYPE_NAME_PREFIX, "PNI")
+                .setCompilationFlag(io.vproxy.pni.exec.CompilationFlag.RELEASE_PNI_H_FILE)
+                .setCompilationFlag(io.vproxy.pni.exec.CompilationFlag.RELEASE_PNI_C_FILE)
+                .setCompilationFlag(io.vproxy.pni.exec.CompilationFlag.RELEASE_JNI_H_MOCK_FILE)
         )
 
         doLast {

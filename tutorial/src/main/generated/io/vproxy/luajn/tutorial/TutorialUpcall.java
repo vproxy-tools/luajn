@@ -59,11 +59,11 @@ public class TutorialUpcall {
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
-        add = PanamaUtils.defineCFunction(ARENA, addMH, void.class, MemorySegment.class, MemorySegment.class);
-        remove = PanamaUtils.defineCFunction(ARENA, removeMH, void.class, MemorySegment.class, int.class);
-        size = PanamaUtils.defineCFunction(ARENA, sizeMH, int.class, MemorySegment.class);
+        add = PanamaUtils.defineCFunction(new PNILinkOptions(), ARENA, addMH, void.class, MemorySegment.class, MemorySegment.class);
+        remove = PanamaUtils.defineCFunction(new PNILinkOptions(), ARENA, removeMH, void.class, MemorySegment.class, int.class);
+        size = PanamaUtils.defineCFunction(new PNILinkOptions(), ARENA, sizeMH, int.class, MemorySegment.class);
 
-        var initMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_tutorial_TutorialUpcall_INIT", MemorySegment.class, MemorySegment.class, MemorySegment.class);
+        var initMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_tutorial_TutorialUpcall_INIT", MemorySegment.class, MemorySegment.class, MemorySegment.class);
         try {
             initMH.invoke(add, remove, size);
         } catch (Throwable t) {
@@ -86,5 +86,5 @@ public class TutorialUpcall {
         int size(java.util.List<java.lang.String> ls);
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:e26c6f4f7213948b6aeb1b35b0d85d043055c03351163e627da891b3f727a496
+// metadata.generator-version: pni 21.0.0.17
+// sha256:d79221f816d6780b69dcb8e33d9f340e5a54ae3c182e32b74f3ac920d5b301cb

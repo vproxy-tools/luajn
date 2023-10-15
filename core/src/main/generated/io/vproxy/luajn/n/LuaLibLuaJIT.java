@@ -16,7 +16,7 @@ public class LuaLibLuaJIT {
         return INSTANCE;
     }
 
-    private static final MethodHandle openBitMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaLibLuaJIT_openBit", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
+    private static final MethodHandle openBitMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaLibLuaJIT_openBit", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
 
     public void openBit(io.vproxy.luajn.n.LuaState _L) {
         try {
@@ -26,7 +26,7 @@ public class LuaLibLuaJIT {
         }
     }
 
-    private static final MethodHandle openJITMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaLibLuaJIT_openJIT", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
+    private static final MethodHandle openJITMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaLibLuaJIT_openJIT", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
 
     public void openJIT(io.vproxy.luajn.n.LuaState _L) {
         try {
@@ -36,7 +36,7 @@ public class LuaLibLuaJIT {
         }
     }
 
-    private static final MethodHandle openFFIMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaLibLuaJIT_openFFI", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
+    private static final MethodHandle openFFIMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaLibLuaJIT_openFFI", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
 
     public void openFFI(io.vproxy.luajn.n.LuaState _L) {
         try {
@@ -46,7 +46,7 @@ public class LuaLibLuaJIT {
         }
     }
 
-    private static final MethodHandle openStringBufferMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaLibLuaJIT_openStringBuffer", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
+    private static final MethodHandle openStringBufferMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaLibLuaJIT_openStringBuffer", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
 
     public void openStringBuffer(io.vproxy.luajn.n.LuaState _L) {
         try {
@@ -56,5 +56,5 @@ public class LuaLibLuaJIT {
         }
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:d88a0f49c933e171edba32cda1bcda51dd0f0d720733e49c59aa4844c17ed7af
+// metadata.generator-version: pni 21.0.0.17
+// sha256:b30cca6f9097c81eed95c6e2c50b6cef012472870850a95ad748ee47eabf1c68

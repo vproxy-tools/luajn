@@ -1,11 +1,8 @@
 package io.vproxy.luajn.n;
 
-import io.vproxy.pni.annotation.Critical;
-import io.vproxy.pni.annotation.Function;
-import io.vproxy.pni.annotation.Impl;
-import io.vproxy.pni.annotation.Trivial;
+import io.vproxy.pni.annotation.*;
 
-@Function
+@Downcall
 public interface PNILuaLibLuaJIT {
     @Impl(
         // language="c"
@@ -14,8 +11,8 @@ public interface PNILuaLibLuaJIT {
             luaopen_bit(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openBit(PNILuaState _L);
 
     @Impl(
@@ -25,8 +22,8 @@ public interface PNILuaLibLuaJIT {
             luaopen_jit(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openJIT(PNILuaState _L);
 
     @Impl(
@@ -36,8 +33,8 @@ public interface PNILuaLibLuaJIT {
             luaopen_ffi(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openFFI(PNILuaState _L);
 
     @Impl(
@@ -47,7 +44,7 @@ public interface PNILuaLibLuaJIT {
             luaopen_string_buffer(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openStringBuffer(PNILuaState _L);
 }

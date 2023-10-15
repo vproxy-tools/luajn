@@ -42,10 +42,10 @@ rm -f "$target"
 gcc -std=gnu99 -O2 \
     $GCC_OPTS \
     -I "$LUA_INC" \
-    -I "../../../../misc" \
     -I "../c-generated" \
     -I "../../../../core/src/main/c-generated" \
     -L "$LUA_LD/" \
     -shared -Werror -lc -lluajit-5.1 -fPIC \
     ../c-generated/io_vproxy_luajn_benchmark_BenchmarkUpcall.c \
+    ../c-generated/pni.c \
     -o "$target"

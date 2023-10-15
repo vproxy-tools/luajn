@@ -5,6 +5,7 @@ import io.vproxy.luajn.LuaJNState;
 import io.vproxy.luajn.LuaJNative;
 import io.vproxy.luajn.n.LuaLib;
 import io.vproxy.pni.Allocator;
+import io.vproxy.pni.PNILinkOptions;
 import io.vproxy.pni.PNIRef;
 import io.vproxy.pni.PanamaUtils;
 import org.openjdk.jmh.annotations.*;
@@ -38,9 +39,9 @@ public class CallJavaMethodFromLua {
         L = new LuaJNState(allocator);
         LuaLib.get().openLibs(L.getLuaState());
 
-        var ffiOneIntArgIntReturnJavaFunc = PanamaUtils.defineCFunctionByName(arena, CallJavaMethodFromLua.class, "ffiOneIntArgIntReturnJavaFunc");
-        var ffiTwoIntArgsIntReturnJavaFunc = PanamaUtils.defineCFunctionByName(arena, CallJavaMethodFromLua.class, "ffiTwoIntArgsIntReturnJavaFunc");
-        var ffiOneRefArgIntReturnJavaFunc = PanamaUtils.defineCFunctionByName(arena, CallJavaMethodFromLua.class, "ffiOneRefArgIntReturnJavaFunc");
+        var ffiOneIntArgIntReturnJavaFunc = PanamaUtils.defineCFunctionByName(new PNILinkOptions(), arena, CallJavaMethodFromLua.class, "ffiOneIntArgIntReturnJavaFunc");
+        var ffiTwoIntArgsIntReturnJavaFunc = PanamaUtils.defineCFunctionByName(new PNILinkOptions(), arena, CallJavaMethodFromLua.class, "ffiTwoIntArgsIntReturnJavaFunc");
+        var ffiOneRefArgIntReturnJavaFunc = PanamaUtils.defineCFunctionByName(new PNILinkOptions(), arena, CallJavaMethodFromLua.class, "ffiOneRefArgIntReturnJavaFunc");
 
         L.getGlobal().put("ffiOneIntArgIntReturnJavaFunc", ffiOneIntArgIntReturnJavaFunc);
         L.getGlobal().put("ffiTwoIntArgsIntReturnJavaFunc", ffiTwoIntArgsIntReturnJavaFunc);

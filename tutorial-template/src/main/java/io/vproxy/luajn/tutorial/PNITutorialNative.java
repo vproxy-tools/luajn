@@ -14,7 +14,7 @@ abstract class PNITutorialNative {
     long longValue;
 
     @Impl(c = "")
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void dummyPlaceHolderForGeneratingImplHFile();
 }

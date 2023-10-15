@@ -60,11 +60,11 @@ public class BenchmarkUpcall {
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
-        oneIntArgIntReturn = PanamaUtils.defineCFunction(ARENA, oneIntArgIntReturnMH, int.class, int.class);
-        twoIntArgIntReturn = PanamaUtils.defineCFunction(ARENA, twoIntArgIntReturnMH, int.class, int.class, int.class);
-        oneRefArgIntReturn = PanamaUtils.defineCFunction(ARENA, oneRefArgIntReturnMH, int.class, MemorySegment.class);
+        oneIntArgIntReturn = PanamaUtils.defineCFunction(new PNILinkOptions(), ARENA, oneIntArgIntReturnMH, int.class, int.class);
+        twoIntArgIntReturn = PanamaUtils.defineCFunction(new PNILinkOptions(), ARENA, twoIntArgIntReturnMH, int.class, int.class, int.class);
+        oneRefArgIntReturn = PanamaUtils.defineCFunction(new PNILinkOptions(), ARENA, oneRefArgIntReturnMH, int.class, MemorySegment.class);
 
-        var initMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_benchmark_BenchmarkUpcall_INIT", MemorySegment.class, MemorySegment.class, MemorySegment.class);
+        var initMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_benchmark_BenchmarkUpcall_INIT", MemorySegment.class, MemorySegment.class, MemorySegment.class);
         try {
             initMH.invoke(oneIntArgIntReturn, twoIntArgIntReturn, oneRefArgIntReturn);
         } catch (Throwable t) {
@@ -87,5 +87,5 @@ public class BenchmarkUpcall {
         int oneRefArgIntReturn(java.lang.Integer ref);
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:a1a57313e69f6b14abf4cdec0ca0693c0499aeae9eb87b9dd9f88b9ab19b3754
+// metadata.generator-version: pni 21.0.0.17
+// sha256:aba7429d8d24bdf5341eaaae5acb16b393d9118cf8d43fa3d32bc352d5b5d094

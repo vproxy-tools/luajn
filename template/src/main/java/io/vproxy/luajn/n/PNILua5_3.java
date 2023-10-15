@@ -3,7 +3,7 @@ package io.vproxy.luajn.n;
 import io.vproxy.pni.annotation.*;
 
 @SuppressWarnings("unused")
-@Function
+@Downcall
 @Include({
     "<lua.h>",
     "<lauxlib.h>",
@@ -17,7 +17,7 @@ public interface PNILua5_3 {
             lua_isyieldable(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void isyieldable(PNILuaState _L);
 }

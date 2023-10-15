@@ -16,7 +16,7 @@ public class LuaOpenresty {
         return INSTANCE;
     }
 
-    private static final MethodHandle getExDataMH = PanamaUtils.lookupPNICriticalFunction(true, MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_LuaOpenresty_getExData", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
+    private static final MethodHandle getExDataMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_LuaOpenresty_getExData", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
 
     public MemorySegment getExData(io.vproxy.luajn.n.LuaState _L) {
         MemorySegment RESULT;
@@ -29,7 +29,7 @@ public class LuaOpenresty {
         return RESULT;
     }
 
-    private static final MethodHandle setExDataMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaOpenresty_setExData", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* exdata */);
+    private static final MethodHandle setExDataMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaOpenresty_setExData", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* exdata */);
 
     public void setExData(io.vproxy.luajn.n.LuaState _L, MemorySegment exdata) {
         try {
@@ -39,7 +39,7 @@ public class LuaOpenresty {
         }
     }
 
-    private static final MethodHandle getExData2MH = PanamaUtils.lookupPNICriticalFunction(true, MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_LuaOpenresty_getExData2", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
+    private static final MethodHandle getExData2MH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_LuaOpenresty_getExData2", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
 
     public MemorySegment getExData2(io.vproxy.luajn.n.LuaState _L) {
         MemorySegment RESULT;
@@ -52,7 +52,7 @@ public class LuaOpenresty {
         return RESULT;
     }
 
-    private static final MethodHandle setExData2MH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaOpenresty_setExData2", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* exdata */);
+    private static final MethodHandle setExData2MH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaOpenresty_setExData2", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* exdata */);
 
     public void setExData2(io.vproxy.luajn.n.LuaState _L, MemorySegment exdata) {
         try {
@@ -62,7 +62,7 @@ public class LuaOpenresty {
         }
     }
 
-    private static final MethodHandle resetThreadMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaOpenresty_resetThread", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _th */);
+    private static final MethodHandle resetThreadMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaOpenresty_resetThread", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _th */);
 
     public void resetThread(io.vproxy.luajn.n.LuaState _L, io.vproxy.luajn.n.LuaState _th) {
         try {
@@ -72,5 +72,5 @@ public class LuaOpenresty {
         }
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:da372f3424b4ba28b39de21b9d6b7cdf658d88adec49327dcbe8037fdcdb9a85
+// metadata.generator-version: pni 21.0.0.17
+// sha256:b4e5ddc0e72a7a257932ec2fdc9f1ecf2c8bd3babb7a2877a127450b7524e6ae

@@ -16,7 +16,7 @@ public class Lua5_3 {
         return INSTANCE;
     }
 
-    private static final MethodHandle isyieldableMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_Lua5_3_isyieldable", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
+    private static final MethodHandle isyieldableMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_Lua5_3_isyieldable", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
 
     public void isyieldable(io.vproxy.luajn.n.LuaState _L) {
         try {
@@ -26,5 +26,5 @@ public class Lua5_3 {
         }
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:d3263fb76560c0749dbfdd7cc8f7cb3da67bb5e2abe5a08a5601926ecf16aadc
+// metadata.generator-version: pni 21.0.0.17
+// sha256:459a8f304687ec1848828effaa676f928d1b3953a35a0ac9caa83519fc0ca932

@@ -16,7 +16,7 @@ public class Helper5_2 {
         return INSTANCE;
     }
 
-    private static final MethodHandle LUA_GCISRUNNINGMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper5_2_LUA_GCISRUNNING");
+    private static final MethodHandle LUA_GCISRUNNINGMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper5_2_LUA_GCISRUNNING");
 
     public int LUA_GCISRUNNING() {
         int RESULT;
@@ -28,7 +28,7 @@ public class Helper5_2 {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_OKMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper5_2_LUA_OK");
+    private static final MethodHandle LUA_OKMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper5_2_LUA_OK");
 
     public int LUA_OK() {
         int RESULT;
@@ -40,7 +40,7 @@ public class Helper5_2 {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_RIDX_GLOBALSMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper5_2_LUA_RIDX_GLOBALS");
+    private static final MethodHandle LUA_RIDX_GLOBALSMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper5_2_LUA_RIDX_GLOBALS");
 
     public int LUA_RIDX_GLOBALS() {
         int RESULT;
@@ -52,5 +52,5 @@ public class Helper5_2 {
         return RESULT;
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:55884a470acafaf749eea8b2119ecb6b5a105130238f75e79e8e59be7d982413
+// metadata.generator-version: pni 21.0.0.17
+// sha256:a0f3a677b47ea09fe28b2b29fd384753d48bf7b2c8fc5147de76e7bbf7669605

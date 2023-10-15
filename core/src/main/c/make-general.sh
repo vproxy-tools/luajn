@@ -42,9 +42,13 @@ for s in $suffix
 do
   cname="core"
   target="luajn"
+  link_luajn=""
+  compile_pni="../c-generated/pni.c"
   if [[ "$s" != "-" ]]; then
     cname="$cname$s"
     target="$target$s"
+    link_luajn="-lluajn"
+    compile_pni=""
   fi
 
   cname="$cname"".c"
@@ -62,10 +66,10 @@ do
   gcc -std=gnu99 -O2 \
     $GCC_OPTS \
     -I "$LUA_INC" \
-    -I "../../../../misc" \
     -I "../c-generated" \
-    -L "$LUA_LD/" \
-    -shared -Werror -lc -l$LUA_LIB -fPIC \
+    -L "$LUA_LD/" -L "./" \
+    -shared -Werror -lc -l$LUA_LIB $link_luajn -fPIC \
     "$cname" "../c-generated/io_vproxy_luajn_n_LuaDebug.extra.c" \
+    $compile_pni \
     -o "$target"
 done

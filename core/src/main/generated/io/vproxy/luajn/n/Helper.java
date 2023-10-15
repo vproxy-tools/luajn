@@ -16,7 +16,7 @@ public class Helper {
         return INSTANCE;
     }
 
-    private static final MethodHandle flushStdoutMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_Helper_flushStdout");
+    private static final MethodHandle flushStdoutMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_Helper_flushStdout");
 
     public void flushStdout() {
         try {
@@ -26,7 +26,7 @@ public class Helper {
         }
     }
 
-    private static final MethodHandle memsetMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_Helper_memset", MemorySegment.class /* b */, int.class /* c */, long.class /* len */);
+    private static final MethodHandle memsetMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_Helper_memset", MemorySegment.class /* b */, int.class /* c */, long.class /* len */);
 
     public void memset(MemorySegment b, int c, long len) {
         try {
@@ -36,7 +36,7 @@ public class Helper {
         }
     }
 
-    private static final MethodHandle temporaryVariablesTableIndexMH = PanamaUtils.lookupPNICriticalFunction(true, MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_Helper_temporaryVariablesTableIndex");
+    private static final MethodHandle temporaryVariablesTableIndexMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_Helper_temporaryVariablesTableIndex");
 
     public MemorySegment temporaryVariablesTableIndex() {
         MemorySegment RESULT;
@@ -49,7 +49,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_REGISTRYINDEXMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_REGISTRYINDEX");
+    private static final MethodHandle LUA_REGISTRYINDEXMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_REGISTRYINDEX");
 
     public int LUA_REGISTRYINDEX() {
         int RESULT;
@@ -61,7 +61,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_ENVIRONINDEXMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_ENVIRONINDEX");
+    private static final MethodHandle LUA_ENVIRONINDEXMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_ENVIRONINDEX");
 
     public int LUA_ENVIRONINDEX() {
         int RESULT;
@@ -73,7 +73,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_GLOBALSINDEXMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GLOBALSINDEX");
+    private static final MethodHandle LUA_GLOBALSINDEXMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GLOBALSINDEX");
 
     public int LUA_GLOBALSINDEX() {
         int RESULT;
@@ -85,7 +85,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_YIELDMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_YIELD");
+    private static final MethodHandle LUA_YIELDMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_YIELD");
 
     public int LUA_YIELD() {
         int RESULT;
@@ -97,7 +97,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_ERRRUNMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_ERRRUN");
+    private static final MethodHandle LUA_ERRRUNMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_ERRRUN");
 
     public int LUA_ERRRUN() {
         int RESULT;
@@ -109,7 +109,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_ERRSYNTAXMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_ERRSYNTAX");
+    private static final MethodHandle LUA_ERRSYNTAXMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_ERRSYNTAX");
 
     public int LUA_ERRSYNTAX() {
         int RESULT;
@@ -121,7 +121,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_ERRMEMMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_ERRMEM");
+    private static final MethodHandle LUA_ERRMEMMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_ERRMEM");
 
     public int LUA_ERRMEM() {
         int RESULT;
@@ -133,7 +133,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_ERRERRMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_ERRERR");
+    private static final MethodHandle LUA_ERRERRMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_ERRERR");
 
     public int LUA_ERRERR() {
         int RESULT;
@@ -145,7 +145,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_MULTRETMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_MULTRET");
+    private static final MethodHandle LUA_MULTRETMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_MULTRET");
 
     public int LUA_MULTRET() {
         int RESULT;
@@ -157,7 +157,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_TNONEMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TNONE");
+    private static final MethodHandle LUA_TNONEMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TNONE");
 
     public int LUA_TNONE() {
         int RESULT;
@@ -169,7 +169,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_TNILMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TNIL");
+    private static final MethodHandle LUA_TNILMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TNIL");
 
     public int LUA_TNIL() {
         int RESULT;
@@ -181,7 +181,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_TBOOLEANMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TBOOLEAN");
+    private static final MethodHandle LUA_TBOOLEANMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TBOOLEAN");
 
     public int LUA_TBOOLEAN() {
         int RESULT;
@@ -193,7 +193,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_TLIGHTUSERDATAMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TLIGHTUSERDATA");
+    private static final MethodHandle LUA_TLIGHTUSERDATAMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TLIGHTUSERDATA");
 
     public int LUA_TLIGHTUSERDATA() {
         int RESULT;
@@ -205,7 +205,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_TNUMBERMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TNUMBER");
+    private static final MethodHandle LUA_TNUMBERMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TNUMBER");
 
     public int LUA_TNUMBER() {
         int RESULT;
@@ -217,7 +217,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_TSTRINGMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TSTRING");
+    private static final MethodHandle LUA_TSTRINGMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TSTRING");
 
     public int LUA_TSTRING() {
         int RESULT;
@@ -229,7 +229,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_TTABLEMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TTABLE");
+    private static final MethodHandle LUA_TTABLEMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TTABLE");
 
     public int LUA_TTABLE() {
         int RESULT;
@@ -241,7 +241,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_TFUNCTIONMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TFUNCTION");
+    private static final MethodHandle LUA_TFUNCTIONMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TFUNCTION");
 
     public int LUA_TFUNCTION() {
         int RESULT;
@@ -253,7 +253,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_TUSERDATAMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TUSERDATA");
+    private static final MethodHandle LUA_TUSERDATAMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TUSERDATA");
 
     public int LUA_TUSERDATA() {
         int RESULT;
@@ -265,7 +265,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_TTHREADMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TTHREAD");
+    private static final MethodHandle LUA_TTHREADMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_TTHREAD");
 
     public int LUA_TTHREAD() {
         int RESULT;
@@ -277,7 +277,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_MINSTACKMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_MINSTACK");
+    private static final MethodHandle LUA_MINSTACKMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_MINSTACK");
 
     public int LUA_MINSTACK() {
         int RESULT;
@@ -289,7 +289,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_GCSTOPMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCSTOP");
+    private static final MethodHandle LUA_GCSTOPMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCSTOP");
 
     public int LUA_GCSTOP() {
         int RESULT;
@@ -301,7 +301,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_GCRESTARTMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCRESTART");
+    private static final MethodHandle LUA_GCRESTARTMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCRESTART");
 
     public int LUA_GCRESTART() {
         int RESULT;
@@ -313,7 +313,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_GCCOLLECTMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCCOLLECT");
+    private static final MethodHandle LUA_GCCOLLECTMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCCOLLECT");
 
     public int LUA_GCCOLLECT() {
         int RESULT;
@@ -325,7 +325,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_GCCOUNTMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCCOUNT");
+    private static final MethodHandle LUA_GCCOUNTMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCCOUNT");
 
     public int LUA_GCCOUNT() {
         int RESULT;
@@ -337,7 +337,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_GCCOUNTBMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCCOUNTB");
+    private static final MethodHandle LUA_GCCOUNTBMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCCOUNTB");
 
     public int LUA_GCCOUNTB() {
         int RESULT;
@@ -349,7 +349,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_GCSTEPMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCSTEP");
+    private static final MethodHandle LUA_GCSTEPMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCSTEP");
 
     public int LUA_GCSTEP() {
         int RESULT;
@@ -361,7 +361,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_GCSETPAUSEMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCSETPAUSE");
+    private static final MethodHandle LUA_GCSETPAUSEMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCSETPAUSE");
 
     public int LUA_GCSETPAUSE() {
         int RESULT;
@@ -373,7 +373,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_GCSETSTEPMULMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCSETSTEPMUL");
+    private static final MethodHandle LUA_GCSETSTEPMULMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_GCSETSTEPMUL");
 
     public int LUA_GCSETSTEPMUL() {
         int RESULT;
@@ -385,7 +385,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_HOOKCALLMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_HOOKCALL");
+    private static final MethodHandle LUA_HOOKCALLMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_HOOKCALL");
 
     public int LUA_HOOKCALL() {
         int RESULT;
@@ -397,7 +397,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_HOOKRETMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_HOOKRET");
+    private static final MethodHandle LUA_HOOKRETMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_HOOKRET");
 
     public int LUA_HOOKRET() {
         int RESULT;
@@ -409,7 +409,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_HOOKLINEMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_HOOKLINE");
+    private static final MethodHandle LUA_HOOKLINEMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_HOOKLINE");
 
     public int LUA_HOOKLINE() {
         int RESULT;
@@ -421,7 +421,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_HOOKCOUNTMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_HOOKCOUNT");
+    private static final MethodHandle LUA_HOOKCOUNTMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_HOOKCOUNT");
 
     public int LUA_HOOKCOUNT() {
         int RESULT;
@@ -433,7 +433,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_HOOKTAILRETMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_HOOKTAILRET");
+    private static final MethodHandle LUA_HOOKTAILRETMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_HOOKTAILRET");
 
     public int LUA_HOOKTAILRET() {
         int RESULT;
@@ -445,7 +445,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_MASKCALLMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_MASKCALL");
+    private static final MethodHandle LUA_MASKCALLMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_MASKCALL");
 
     public int LUA_MASKCALL() {
         int RESULT;
@@ -457,7 +457,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_MASKRETMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_MASKRET");
+    private static final MethodHandle LUA_MASKRETMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_MASKRET");
 
     public int LUA_MASKRET() {
         int RESULT;
@@ -469,7 +469,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_MASKLINEMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_MASKLINE");
+    private static final MethodHandle LUA_MASKLINEMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_MASKLINE");
 
     public int LUA_MASKLINE() {
         int RESULT;
@@ -481,7 +481,7 @@ public class Helper {
         return RESULT;
     }
 
-    private static final MethodHandle LUA_MASKCOUNTMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_MASKCOUNT");
+    private static final MethodHandle LUA_MASKCOUNTMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Helper_LUA_MASKCOUNT");
 
     public int LUA_MASKCOUNT() {
         int RESULT;
@@ -493,5 +493,5 @@ public class Helper {
         return RESULT;
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:a9a9579cd14e75d97382b828cf79f85544386d27283f415c2527c9d2d2080bbb
+// metadata.generator-version: pni 21.0.0.17
+// sha256:f4ee84db17120a4772dc979b175b2bfc5ef139adeff95e2ddbffd5cae200a856

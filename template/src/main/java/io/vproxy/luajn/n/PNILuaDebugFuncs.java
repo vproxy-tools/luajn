@@ -1,13 +1,10 @@
 package io.vproxy.luajn.n;
 
-import io.vproxy.pni.annotation.Critical;
-import io.vproxy.pni.annotation.Function;
-import io.vproxy.pni.annotation.Impl;
-import io.vproxy.pni.annotation.Trivial;
+import io.vproxy.pni.annotation.*;
 
 import java.lang.foreign.MemorySegment;
 
-@Function
+@Downcall
 public interface PNILuaDebugFuncs {
     @Impl(
         // language="c"
@@ -15,8 +12,8 @@ public interface PNILuaDebugFuncs {
             return sizeof(struct lua_Debug);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     long sizeofLuaDebug();
 
     @Impl(
@@ -26,8 +23,8 @@ public interface PNILuaDebugFuncs {
             return lua_gethook(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     MemorySegment getHook(PNILuaState _L);
 
     @Impl(
@@ -37,8 +34,8 @@ public interface PNILuaDebugFuncs {
             return lua_gethookcount(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int getHookCount(PNILuaState _L);
 
     @Impl(
@@ -48,8 +45,8 @@ public interface PNILuaDebugFuncs {
             return lua_gethookmask(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int getHookMask(PNILuaState _L);
 
     @Impl(
@@ -59,8 +56,8 @@ public interface PNILuaDebugFuncs {
             return lua_getinfo(L, what, ar);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int getInfo(PNILuaState _L, String what, PNILuaDebug ar);
 
     @Impl(
@@ -70,8 +67,8 @@ public interface PNILuaDebugFuncs {
             return (char*) lua_getlocal(L, ar, n);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     String getLocal(PNILuaState _L, PNILuaDebug ar, int n);
 
     @Impl(
@@ -81,8 +78,8 @@ public interface PNILuaDebugFuncs {
             return lua_getstack(L, level, ar);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int getStack(PNILuaState _L, int level, PNILuaDebug ar);
 
     @Impl(
@@ -92,8 +89,8 @@ public interface PNILuaDebugFuncs {
             return (char*) lua_getupvalue(L, funcIndex, n);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     String getUpValue(PNILuaState _L, int funcIndex, int n);
 
     @Impl(
@@ -108,8 +105,8 @@ public interface PNILuaDebugFuncs {
             #endif
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int setHook(PNILuaState _L, MemorySegment hookF, int mask, int count);
 
     @Impl(
@@ -119,8 +116,8 @@ public interface PNILuaDebugFuncs {
             return (char*) lua_setlocal(L, ar, n);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     String setLocal(PNILuaState _L, PNILuaDebug ar, int n);
 
     @Impl(
@@ -130,7 +127,7 @@ public interface PNILuaDebugFuncs {
             return (char*) lua_setupvalue(L, funcIndex, n);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     String setUpValue(PNILuaState _L, int funcIndex, int n);
 }

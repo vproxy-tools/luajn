@@ -15,9 +15,9 @@ import java.util.ArrayList;
 public class Tutorial17 {
     @SuppressWarnings("DuplicatedCode")
     public static void main(String[] args) {
+        LuaJNative.fullInit();
         System.loadLibrary("luajn-tutorial");
         TutorialUpcall.setImpl(TutorialUpcallImpl.get());
-        LuaJNative.fullInit();
         System.out.println("Tutorial.17 Use Java Objects in Lua");
 
         System.out.println("ref storage size before operating: " + PNIRef.currentRefStorageSize());

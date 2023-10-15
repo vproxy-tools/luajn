@@ -5,7 +5,7 @@ import io.vproxy.pni.annotation.*;
 import java.lang.foreign.MemorySegment;
 
 @SuppressWarnings("unused")
-@Function
+@Downcall
 @Include({
     "<lua.h>",
     "<lauxlib.h>",
@@ -19,8 +19,8 @@ interface PNILua {
             return JavaCritical_io_vproxy_luajn_n_Lua_initState(L, return_);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     PNILuaState newState();
 
     @Impl(
@@ -30,8 +30,8 @@ interface PNILua {
             return JavaCritical_io_vproxy_luajn_n_Lua_initState(L, return_);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     PNILuaState newState2(MemorySegment allocF, MemorySegment ud);
 
     @Impl(
@@ -63,8 +63,8 @@ interface PNILua {
             return return_;
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     PNILuaState initState(MemorySegment _L);
 
     @Impl(
@@ -74,8 +74,8 @@ interface PNILua {
             return lua_atpanic(L, (lua_CFunction) func);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     MemorySegment atPanic(PNILuaState _L, MemorySegment func);
 
     @Impl(
@@ -89,8 +89,8 @@ interface PNILua {
             #endif
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int dump(PNILuaState _L, MemorySegment writer, MemorySegment data);
 
     @Impl(
@@ -104,8 +104,8 @@ interface PNILua {
             #endif
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int load(PNILuaState _L, MemorySegment reader, MemorySegment data, String chunkName);
 
     @Impl(
@@ -118,8 +118,8 @@ interface PNILua {
             return return_;
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     PNILuaState newThread(PNILuaState _L);
 
     @Impl(
@@ -129,8 +129,8 @@ interface PNILua {
             return luaL_loadfile(L, filename);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int loadFile(PNILuaState _L, String filename);
 
     @Impl(
@@ -140,8 +140,8 @@ interface PNILua {
             return luaL_loadstring(L, s);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int loadString(PNILuaState _L, String s);
 
     @Impl(
@@ -151,8 +151,8 @@ interface PNILua {
             return lua_gc(L, what, data);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int gc(PNILuaState _L, int what, int data);
 
     @Impl(
@@ -163,8 +163,8 @@ interface PNILua {
             return lua_getallocf(L, ud);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     MemorySegment getAllocF(PNILuaState _L, MemorySegment _ud);
 
     @Impl(
@@ -174,8 +174,8 @@ interface PNILua {
             luaL_getmetatable(L, tname);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void getMetaTable(PNILuaState _L, String tname);
 
     @Impl(
@@ -185,8 +185,8 @@ interface PNILua {
             luajn_register_module(L, libname);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void registerModule(PNILuaState _L, String libname);
 
     @Impl(
@@ -203,8 +203,8 @@ interface PNILua {
             #endif
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int resume(PNILuaState _L, int narg);
 
     @Impl(
@@ -214,8 +214,8 @@ interface PNILua {
             lua_setallocf(L, (lua_Alloc) allocF, ud);
             """
     )
-    @Critical
-    @Trivial
+    @Style(Styles.critical)
+    @LinkerOption.Critical
     void setAllocF(PNILuaState _L, MemorySegment allocF, MemorySegment ud);
 
     @Impl(
@@ -225,8 +225,8 @@ interface PNILua {
             return lua_status(L);
             """
     )
-    @Critical
-    @Trivial
+    @Style(Styles.critical)
+    @LinkerOption.Critical
     int status(PNILuaState _L);
 
     @Impl(
@@ -236,8 +236,8 @@ interface PNILua {
             return (char*) lua_typename(L, tp);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     String typename(PNILuaState _L, int tp);
 
     @Impl(
@@ -246,8 +246,8 @@ interface PNILua {
             return lua_upvalueindex(index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int upValueIndex(int index);
 
     @Impl(
@@ -258,8 +258,8 @@ interface PNILua {
             return lua_xmove(from, to, n);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void xmove(PNILuaState _from, PNILuaState _to, int n);
 
 // it's unsafe to use yield in Java
@@ -270,8 +270,8 @@ interface PNILua {
 //            return lua_yield(L, nresults);
 //            """
 //    )
-//    @Trivial
-//    @Critical
+//    @LinkerOption.Critical
+//    @Style(Styles.critical)
 //    int yield(PNILuaState _L, int nresults);
 
     @Impl(
@@ -292,7 +292,7 @@ interface PNILua {
             #endif
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int version(PNILuaState _L);
 }

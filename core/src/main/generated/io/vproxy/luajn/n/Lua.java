@@ -16,7 +16,7 @@ public class Lua {
         return INSTANCE;
     }
 
-    private static final MethodHandle newStateMH = PanamaUtils.lookupPNICriticalFunction(true, io.vproxy.luajn.n.LuaState.LAYOUT.getClass(), "JavaCritical_io_vproxy_luajn_n_Lua_newState", MemorySegment.class /* return */);
+    private static final MethodHandle newStateMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), io.vproxy.luajn.n.LuaState.LAYOUT.getClass(), "JavaCritical_io_vproxy_luajn_n_Lua_newState", MemorySegment.class /* return */);
 
     public io.vproxy.luajn.n.LuaState newState(Allocator ALLOCATOR) {
         MemorySegment RESULT;
@@ -29,7 +29,7 @@ public class Lua {
         return RESULT == null ? null : new io.vproxy.luajn.n.LuaState(RESULT);
     }
 
-    private static final MethodHandle newState2MH = PanamaUtils.lookupPNICriticalFunction(true, io.vproxy.luajn.n.LuaState.LAYOUT.getClass(), "JavaCritical_io_vproxy_luajn_n_Lua_newState2", MemorySegment.class /* allocF */, MemorySegment.class /* ud */, MemorySegment.class /* return */);
+    private static final MethodHandle newState2MH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), io.vproxy.luajn.n.LuaState.LAYOUT.getClass(), "JavaCritical_io_vproxy_luajn_n_Lua_newState2", MemorySegment.class /* allocF */, MemorySegment.class /* ud */, MemorySegment.class /* return */);
 
     public io.vproxy.luajn.n.LuaState newState2(MemorySegment allocF, MemorySegment ud, Allocator ALLOCATOR) {
         MemorySegment RESULT;
@@ -42,7 +42,7 @@ public class Lua {
         return RESULT == null ? null : new io.vproxy.luajn.n.LuaState(RESULT);
     }
 
-    private static final MethodHandle initStateMH = PanamaUtils.lookupPNICriticalFunction(true, io.vproxy.luajn.n.LuaState.LAYOUT.getClass(), "JavaCritical_io_vproxy_luajn_n_Lua_initState", MemorySegment.class /* _L */, MemorySegment.class /* return */);
+    private static final MethodHandle initStateMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), io.vproxy.luajn.n.LuaState.LAYOUT.getClass(), "JavaCritical_io_vproxy_luajn_n_Lua_initState", MemorySegment.class /* _L */, MemorySegment.class /* return */);
 
     public io.vproxy.luajn.n.LuaState initState(MemorySegment _L, Allocator ALLOCATOR) {
         MemorySegment RESULT;
@@ -55,7 +55,7 @@ public class Lua {
         return RESULT == null ? null : new io.vproxy.luajn.n.LuaState(RESULT);
     }
 
-    private static final MethodHandle atPanicMH = PanamaUtils.lookupPNICriticalFunction(true, MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_Lua_atPanic", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* func */);
+    private static final MethodHandle atPanicMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_Lua_atPanic", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* func */);
 
     public MemorySegment atPanic(io.vproxy.luajn.n.LuaState _L, MemorySegment func) {
         MemorySegment RESULT;
@@ -68,7 +68,7 @@ public class Lua {
         return RESULT;
     }
 
-    private static final MethodHandle dumpMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Lua_dump", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* writer */, MemorySegment.class /* data */);
+    private static final MethodHandle dumpMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Lua_dump", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* writer */, MemorySegment.class /* data */);
 
     public int dump(io.vproxy.luajn.n.LuaState _L, MemorySegment writer, MemorySegment data) {
         int RESULT;
@@ -80,7 +80,7 @@ public class Lua {
         return RESULT;
     }
 
-    private static final MethodHandle loadMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Lua_load", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* reader */, MemorySegment.class /* data */, String.class /* chunkName */);
+    private static final MethodHandle loadMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Lua_load", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* reader */, MemorySegment.class /* data */, String.class /* chunkName */);
 
     public int load(io.vproxy.luajn.n.LuaState _L, MemorySegment reader, MemorySegment data, PNIString chunkName) {
         int RESULT;
@@ -92,7 +92,7 @@ public class Lua {
         return RESULT;
     }
 
-    private static final MethodHandle newThreadMH = PanamaUtils.lookupPNICriticalFunction(true, io.vproxy.luajn.n.LuaState.LAYOUT.getClass(), "JavaCritical_io_vproxy_luajn_n_Lua_newThread", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* return */);
+    private static final MethodHandle newThreadMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), io.vproxy.luajn.n.LuaState.LAYOUT.getClass(), "JavaCritical_io_vproxy_luajn_n_Lua_newThread", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* return */);
 
     public io.vproxy.luajn.n.LuaState newThread(io.vproxy.luajn.n.LuaState _L, Allocator ALLOCATOR) {
         MemorySegment RESULT;
@@ -105,7 +105,7 @@ public class Lua {
         return RESULT == null ? null : new io.vproxy.luajn.n.LuaState(RESULT);
     }
 
-    private static final MethodHandle loadFileMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Lua_loadFile", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, String.class /* filename */);
+    private static final MethodHandle loadFileMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Lua_loadFile", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, String.class /* filename */);
 
     public int loadFile(io.vproxy.luajn.n.LuaState _L, PNIString filename) {
         int RESULT;
@@ -117,7 +117,7 @@ public class Lua {
         return RESULT;
     }
 
-    private static final MethodHandle loadStringMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Lua_loadString", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, String.class /* s */);
+    private static final MethodHandle loadStringMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Lua_loadString", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, String.class /* s */);
 
     public int loadString(io.vproxy.luajn.n.LuaState _L, PNIString s) {
         int RESULT;
@@ -129,7 +129,7 @@ public class Lua {
         return RESULT;
     }
 
-    private static final MethodHandle gcMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Lua_gc", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* what */, int.class /* data */);
+    private static final MethodHandle gcMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Lua_gc", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* what */, int.class /* data */);
 
     public int gc(io.vproxy.luajn.n.LuaState _L, int what, int data) {
         int RESULT;
@@ -141,7 +141,7 @@ public class Lua {
         return RESULT;
     }
 
-    private static final MethodHandle getAllocFMH = PanamaUtils.lookupPNICriticalFunction(true, MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_Lua_getAllocF", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* _ud */);
+    private static final MethodHandle getAllocFMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_Lua_getAllocF", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* _ud */);
 
     public MemorySegment getAllocF(io.vproxy.luajn.n.LuaState _L, MemorySegment _ud) {
         MemorySegment RESULT;
@@ -154,7 +154,7 @@ public class Lua {
         return RESULT;
     }
 
-    private static final MethodHandle getMetaTableMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_Lua_getMetaTable", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, String.class /* tname */);
+    private static final MethodHandle getMetaTableMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_Lua_getMetaTable", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, String.class /* tname */);
 
     public void getMetaTable(io.vproxy.luajn.n.LuaState _L, PNIString tname) {
         try {
@@ -164,7 +164,7 @@ public class Lua {
         }
     }
 
-    private static final MethodHandle registerModuleMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_Lua_registerModule", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, String.class /* libname */);
+    private static final MethodHandle registerModuleMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_Lua_registerModule", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, String.class /* libname */);
 
     public void registerModule(io.vproxy.luajn.n.LuaState _L, PNIString libname) {
         try {
@@ -174,7 +174,7 @@ public class Lua {
         }
     }
 
-    private static final MethodHandle resumeMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Lua_resume", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* narg */);
+    private static final MethodHandle resumeMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Lua_resume", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* narg */);
 
     public int resume(io.vproxy.luajn.n.LuaState _L, int narg) {
         int RESULT;
@@ -186,7 +186,7 @@ public class Lua {
         return RESULT;
     }
 
-    private static final MethodHandle setAllocFMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_Lua_setAllocF", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* allocF */, MemorySegment.class /* ud */);
+    private static final MethodHandle setAllocFMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_Lua_setAllocF", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, MemorySegment.class /* allocF */, MemorySegment.class /* ud */);
 
     public void setAllocF(io.vproxy.luajn.n.LuaState _L, MemorySegment allocF, MemorySegment ud) {
         try {
@@ -196,7 +196,7 @@ public class Lua {
         }
     }
 
-    private static final MethodHandle statusMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Lua_status", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
+    private static final MethodHandle statusMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Lua_status", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
 
     public int status(io.vproxy.luajn.n.LuaState _L) {
         int RESULT;
@@ -208,7 +208,7 @@ public class Lua {
         return RESULT;
     }
 
-    private static final MethodHandle typenameMH = PanamaUtils.lookupPNICriticalFunction(true, String.class, "JavaCritical_io_vproxy_luajn_n_Lua_typename", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* tp */);
+    private static final MethodHandle typenameMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), String.class, "JavaCritical_io_vproxy_luajn_n_Lua_typename", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* tp */);
 
     public PNIString typename(io.vproxy.luajn.n.LuaState _L, int tp) {
         MemorySegment RESULT;
@@ -220,7 +220,7 @@ public class Lua {
         return RESULT.address() == 0 ? null : new PNIString(RESULT);
     }
 
-    private static final MethodHandle upValueIndexMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Lua_upValueIndex", int.class /* index */);
+    private static final MethodHandle upValueIndexMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Lua_upValueIndex", int.class /* index */);
 
     public int upValueIndex(int index) {
         int RESULT;
@@ -232,7 +232,7 @@ public class Lua {
         return RESULT;
     }
 
-    private static final MethodHandle xmoveMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_Lua_xmove", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _from */, io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _to */, int.class /* n */);
+    private static final MethodHandle xmoveMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_Lua_xmove", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _from */, io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _to */, int.class /* n */);
 
     public void xmove(io.vproxy.luajn.n.LuaState _from, io.vproxy.luajn.n.LuaState _to, int n) {
         try {
@@ -242,7 +242,7 @@ public class Lua {
         }
     }
 
-    private static final MethodHandle versionMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_Lua_version", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
+    private static final MethodHandle versionMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_Lua_version", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */);
 
     public int version(io.vproxy.luajn.n.LuaState _L) {
         int RESULT;
@@ -254,5 +254,5 @@ public class Lua {
         return RESULT;
     }
 }
-// metadata.generator-version: pni 21.0.0.15
-// sha256:e1002952ffeb1813b59a6e925704ef100450135c4700ebde54082281d8cc58c6
+// metadata.generator-version: pni 21.0.0.17
+// sha256:8fd6b767b2814784d04f426e19810f43990ef40e0bb415c2c93a06178c076515

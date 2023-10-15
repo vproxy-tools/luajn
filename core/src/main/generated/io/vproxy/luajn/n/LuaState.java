@@ -46,7 +46,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         this(ALLOCATOR.allocate(LAYOUT));
     }
 
-    private static final MethodHandle closeMH = PanamaUtils.lookupPNICriticalFunction(false, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_close", MemorySegment.class /* self */);
+    private static final MethodHandle closeMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions(), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_close", MemorySegment.class /* self */);
 
     public void close() {
         try {
@@ -56,7 +56,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle callMH = PanamaUtils.lookupPNICriticalFunction(false, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_call", MemorySegment.class /* self */, int.class /* nargs */, int.class /* nresults */);
+    private static final MethodHandle callMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions(), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_call", MemorySegment.class /* self */, int.class /* nargs */, int.class /* nresults */);
 
     public void call(int nargs, int nresults) {
         try {
@@ -66,7 +66,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle callTrivialMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_callTrivial", MemorySegment.class /* self */, int.class /* nargs */, int.class /* nresults */);
+    private static final MethodHandle callTrivialMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_callTrivial", MemorySegment.class /* self */, int.class /* nargs */, int.class /* nresults */);
 
     public void callTrivial(int nargs, int nresults) {
         try {
@@ -76,7 +76,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle checkStackMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_checkStack", MemorySegment.class /* self */, int.class /* extra */);
+    private static final MethodHandle checkStackMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_checkStack", MemorySegment.class /* self */, int.class /* extra */);
 
     public boolean checkStack(int extra) {
         boolean RESULT;
@@ -88,7 +88,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle concatMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_concat", MemorySegment.class /* self */, int.class /* n */);
+    private static final MethodHandle concatMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_concat", MemorySegment.class /* self */, int.class /* n */);
 
     public void concat(int n) {
         try {
@@ -98,7 +98,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle createTableMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_createTable", MemorySegment.class /* self */, int.class /* narr */, int.class /* nrec */);
+    private static final MethodHandle createTableMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_createTable", MemorySegment.class /* self */, int.class /* narr */, int.class /* nrec */);
 
     public void createTable(int narr, int nrec) {
         try {
@@ -108,7 +108,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle equalMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_equal", MemorySegment.class /* self */, int.class /* index1 */, int.class /* index2 */);
+    private static final MethodHandle equalMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_equal", MemorySegment.class /* self */, int.class /* index1 */, int.class /* index2 */);
 
     public boolean equal(int index1, int index2) {
         boolean RESULT;
@@ -120,7 +120,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle errorMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_error", MemorySegment.class /* self */);
+    private static final MethodHandle errorMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_error", MemorySegment.class /* self */);
 
     public int error() {
         int RESULT;
@@ -132,7 +132,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle getFieldMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_getField", MemorySegment.class /* self */, int.class /* index */, String.class /* k */);
+    private static final MethodHandle getFieldMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_getField", MemorySegment.class /* self */, int.class /* index */, String.class /* k */);
 
     public void getField(int index, PNIString k) {
         try {
@@ -142,7 +142,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle getFEnvMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_getFEnv", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle getFEnvMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_getFEnv", MemorySegment.class /* self */, int.class /* index */);
 
     public void getFEnv(int index) {
         try {
@@ -152,7 +152,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle getGlobalMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_getGlobal", MemorySegment.class /* self */, String.class /* name */);
+    private static final MethodHandle getGlobalMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_getGlobal", MemorySegment.class /* self */, String.class /* name */);
 
     public void getGlobal(PNIString name) {
         try {
@@ -162,7 +162,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle getMetaTableMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_getMetaTable", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle getMetaTableMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_getMetaTable", MemorySegment.class /* self */, int.class /* index */);
 
     public int getMetaTable(int index) {
         int RESULT;
@@ -174,7 +174,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle getTableMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_getTable", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle getTableMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_getTable", MemorySegment.class /* self */, int.class /* index */);
 
     public void getTable(int index) {
         try {
@@ -184,7 +184,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle getTopMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_getTop", MemorySegment.class /* self */);
+    private static final MethodHandle getTopMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_getTop", MemorySegment.class /* self */);
 
     public int getTop() {
         int RESULT;
@@ -196,7 +196,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle insertMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_insert", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle insertMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_insert", MemorySegment.class /* self */, int.class /* index */);
 
     public void insert(int index) {
         try {
@@ -206,7 +206,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle isBooleanMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isBoolean", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle isBooleanMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isBoolean", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean isBoolean(int index) {
         boolean RESULT;
@@ -218,7 +218,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle isCFunctionMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isCFunction", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle isCFunctionMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isCFunction", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean isCFunction(int index) {
         boolean RESULT;
@@ -230,7 +230,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle isFunctionMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isFunction", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle isFunctionMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isFunction", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean isFunction(int index) {
         boolean RESULT;
@@ -242,7 +242,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle isLightUserDataMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isLightUserData", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle isLightUserDataMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isLightUserData", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean isLightUserData(int index) {
         boolean RESULT;
@@ -254,7 +254,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle isNilMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isNil", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle isNilMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isNil", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean isNil(int index) {
         boolean RESULT;
@@ -266,7 +266,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle isNoneMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isNone", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle isNoneMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isNone", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean isNone(int index) {
         boolean RESULT;
@@ -278,7 +278,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle isNoneOrNilMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isNoneOrNil", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle isNoneOrNilMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isNoneOrNil", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean isNoneOrNil(int index) {
         boolean RESULT;
@@ -290,7 +290,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle isNumberMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isNumber", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle isNumberMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isNumber", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean isNumber(int index) {
         boolean RESULT;
@@ -302,7 +302,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle isStringMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isString", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle isStringMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isString", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean isString(int index) {
         boolean RESULT;
@@ -314,7 +314,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle isTableMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isTable", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle isTableMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isTable", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean isTable(int index) {
         boolean RESULT;
@@ -326,7 +326,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle isThreadMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isThread", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle isThreadMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isThread", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean isThread(int index) {
         boolean RESULT;
@@ -338,7 +338,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle isUserdataMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isUserdata", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle isUserdataMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_isUserdata", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean isUserdata(int index) {
         boolean RESULT;
@@ -350,7 +350,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle lessthanMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_lessthan", MemorySegment.class /* self */, int.class /* idx1 */, int.class /* idx2 */);
+    private static final MethodHandle lessthanMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_lessthan", MemorySegment.class /* self */, int.class /* idx1 */, int.class /* idx2 */);
 
     public boolean lessthan(int idx1, int idx2) {
         boolean RESULT;
@@ -362,7 +362,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle newTableMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_newTable", MemorySegment.class /* self */);
+    private static final MethodHandle newTableMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_newTable", MemorySegment.class /* self */);
 
     public void newTable() {
         try {
@@ -372,7 +372,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle newUserDataMH = PanamaUtils.lookupPNICriticalFunction(true, MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_LuaState_newUserData", MemorySegment.class /* self */, long.class /* size */);
+    private static final MethodHandle newUserDataMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_LuaState_newUserData", MemorySegment.class /* self */, long.class /* size */);
 
     public MemorySegment newUserData(long size) {
         MemorySegment RESULT;
@@ -385,7 +385,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle nextMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_next", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle nextMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_next", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean next(int index) {
         boolean RESULT;
@@ -397,7 +397,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle objLenMH = PanamaUtils.lookupPNICriticalFunction(true, long.class, "JavaCritical_io_vproxy_luajn_n_LuaState_objLen", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle objLenMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), long.class, "JavaCritical_io_vproxy_luajn_n_LuaState_objLen", MemorySegment.class /* self */, int.class /* index */);
 
     public long objLen(int index) {
         long RESULT;
@@ -409,7 +409,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle pcallMH = PanamaUtils.lookupPNICriticalFunction(false, int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pcall", MemorySegment.class /* self */, int.class /* nargs */, int.class /* nresults */, int.class /* errfunc */);
+    private static final MethodHandle pcallMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions(), int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pcall", MemorySegment.class /* self */, int.class /* nargs */, int.class /* nresults */, int.class /* errfunc */);
 
     public int pcall(int nargs, int nresults, int errfunc) {
         int RESULT;
@@ -421,7 +421,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle pcallTrivialMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pcallTrivial", MemorySegment.class /* self */, int.class /* nargs */, int.class /* nresults */, int.class /* errfunc */);
+    private static final MethodHandle pcallTrivialMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pcallTrivial", MemorySegment.class /* self */, int.class /* nargs */, int.class /* nresults */, int.class /* errfunc */);
 
     public int pcallTrivial(int nargs, int nresults, int errfunc) {
         int RESULT;
@@ -433,7 +433,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle popMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pop", MemorySegment.class /* self */, int.class /* n */);
+    private static final MethodHandle popMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pop", MemorySegment.class /* self */, int.class /* n */);
 
     public void pop(int n) {
         try {
@@ -443,7 +443,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle pushBooleanMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushBoolean", MemorySegment.class /* self */, boolean.class /* b */);
+    private static final MethodHandle pushBooleanMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushBoolean", MemorySegment.class /* self */, boolean.class /* b */);
 
     public void pushBoolean(boolean b) {
         try {
@@ -453,7 +453,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle pushClosureMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushClosure", MemorySegment.class /* self */, io.vproxy.pni.CallSite.class /* fn */, int.class /* n */);
+    private static final MethodHandle pushClosureMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushClosure", MemorySegment.class /* self */, io.vproxy.pni.CallSite.class /* fn */, int.class /* n */);
 
     public void pushClosure(io.vproxy.pni.CallSite<io.vproxy.luajn.n.LuaState> fn, int n) {
         try {
@@ -463,7 +463,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle pushCClosureMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushCClosure", MemorySegment.class /* self */, MemorySegment.class /* fn */, int.class /* n */);
+    private static final MethodHandle pushCClosureMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushCClosure", MemorySegment.class /* self */, MemorySegment.class /* fn */, int.class /* n */);
 
     public void pushCClosure(MemorySegment fn, int n) {
         try {
@@ -473,7 +473,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle pushCFunctionMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushCFunction", MemorySegment.class /* self */, MemorySegment.class /* fn */);
+    private static final MethodHandle pushCFunctionMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushCFunction", MemorySegment.class /* self */, MemorySegment.class /* fn */);
 
     public void pushCFunction(MemorySegment fn) {
         try {
@@ -483,7 +483,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle pushFunctionMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushFunction", MemorySegment.class /* self */, io.vproxy.pni.CallSite.class /* fn */);
+    private static final MethodHandle pushFunctionMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushFunction", MemorySegment.class /* self */, io.vproxy.pni.CallSite.class /* fn */);
 
     public void pushFunction(io.vproxy.pni.CallSite<io.vproxy.luajn.n.LuaState> fn) {
         try {
@@ -493,7 +493,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle pushIntegerMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushInteger", MemorySegment.class /* self */, long.class /* n */);
+    private static final MethodHandle pushIntegerMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushInteger", MemorySegment.class /* self */, long.class /* n */);
 
     public void pushInteger(long n) {
         try {
@@ -503,7 +503,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle pushLightUserDataMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushLightUserData", MemorySegment.class /* self */, MemorySegment.class /* p */);
+    private static final MethodHandle pushLightUserDataMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushLightUserData", MemorySegment.class /* self */, MemorySegment.class /* p */);
 
     public void pushLightUserData(MemorySegment p) {
         try {
@@ -513,7 +513,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle pushLStringMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushLString", MemorySegment.class /* self */, String.class /* s */, long.class /* len */);
+    private static final MethodHandle pushLStringMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushLString", MemorySegment.class /* self */, String.class /* s */, long.class /* len */);
 
     public void pushLString(PNIString s, long len) {
         try {
@@ -523,7 +523,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle pushNilMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushNil", MemorySegment.class /* self */);
+    private static final MethodHandle pushNilMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushNil", MemorySegment.class /* self */);
 
     public void pushNil() {
         try {
@@ -533,7 +533,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle pushNumberMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushNumber", MemorySegment.class /* self */, double.class /* n */);
+    private static final MethodHandle pushNumberMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushNumber", MemorySegment.class /* self */, double.class /* n */);
 
     public void pushNumber(double n) {
         try {
@@ -543,7 +543,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle pushStringMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushString", MemorySegment.class /* self */, String.class /* s */);
+    private static final MethodHandle pushStringMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushString", MemorySegment.class /* self */, String.class /* s */);
 
     public void pushString(PNIString s) {
         try {
@@ -553,7 +553,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle pushThreadMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushThread", MemorySegment.class /* self */);
+    private static final MethodHandle pushThreadMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushThread", MemorySegment.class /* self */);
 
     public int pushThread() {
         int RESULT;
@@ -565,7 +565,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle pushUserDataMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushUserData", MemorySegment.class /* self */, MemorySegment.class /* data */, long.class /* size */, String.class /* metatableName */);
+    private static final MethodHandle pushUserDataMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushUserData", MemorySegment.class /* self */, MemorySegment.class /* data */, long.class /* size */, String.class /* metatableName */);
 
     public void pushUserData(MemorySegment data, long size, PNIString metatableName) {
         try {
@@ -575,7 +575,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle pushValueMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushValue", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle pushValueMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_pushValue", MemorySegment.class /* self */, int.class /* index */);
 
     public void pushValue(int index) {
         try {
@@ -585,7 +585,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle rawEqualMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_rawEqual", MemorySegment.class /* self */, int.class /* idx1 */, int.class /* idx2 */);
+    private static final MethodHandle rawEqualMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_rawEqual", MemorySegment.class /* self */, int.class /* idx1 */, int.class /* idx2 */);
 
     public boolean rawEqual(int idx1, int idx2) {
         boolean RESULT;
@@ -597,7 +597,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle rawGetMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_rawGet", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle rawGetMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_rawGet", MemorySegment.class /* self */, int.class /* index */);
 
     public void rawGet(int index) {
         try {
@@ -607,7 +607,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle rawGetIMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_rawGetI", MemorySegment.class /* self */, int.class /* index */, int.class /* n */);
+    private static final MethodHandle rawGetIMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_rawGetI", MemorySegment.class /* self */, int.class /* index */, int.class /* n */);
 
     public void rawGetI(int index, int n) {
         try {
@@ -617,7 +617,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle rawSetMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_rawSet", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle rawSetMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_rawSet", MemorySegment.class /* self */, int.class /* index */);
 
     public void rawSet(int index) {
         try {
@@ -627,7 +627,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle rawSetIMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_rawSetI", MemorySegment.class /* self */, int.class /* index */, int.class /* n */);
+    private static final MethodHandle rawSetIMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_rawSetI", MemorySegment.class /* self */, int.class /* index */, int.class /* n */);
 
     public void rawSetI(int index, int n) {
         try {
@@ -637,7 +637,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle removeMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_remove", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle removeMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_remove", MemorySegment.class /* self */, int.class /* index */);
 
     public void remove(int index) {
         try {
@@ -647,7 +647,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle replaceMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_replace", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle replaceMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_replace", MemorySegment.class /* self */, int.class /* index */);
 
     public void replace(int index) {
         try {
@@ -657,7 +657,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle setFEnvMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_setFEnv", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle setFEnvMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_setFEnv", MemorySegment.class /* self */, int.class /* index */);
 
     public int setFEnv(int index) {
         int RESULT;
@@ -669,7 +669,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle setFieldMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_setField", MemorySegment.class /* self */, int.class /* index */, String.class /* k */);
+    private static final MethodHandle setFieldMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_setField", MemorySegment.class /* self */, int.class /* index */, String.class /* k */);
 
     public void setField(int index, PNIString k) {
         try {
@@ -679,7 +679,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle setGlobalMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_setGlobal", MemorySegment.class /* self */, String.class /* name */);
+    private static final MethodHandle setGlobalMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_setGlobal", MemorySegment.class /* self */, String.class /* name */);
 
     public void setGlobal(PNIString name) {
         try {
@@ -689,7 +689,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle setMetaTableMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_setMetaTable", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle setMetaTableMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_setMetaTable", MemorySegment.class /* self */, int.class /* index */);
 
     public int setMetaTable(int index) {
         int RESULT;
@@ -701,7 +701,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle setTableMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_setTable", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle setTableMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_setTable", MemorySegment.class /* self */, int.class /* index */);
 
     public void setTable(int index) {
         try {
@@ -711,7 +711,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle setTopMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_setTop", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle setTopMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_LuaState_setTop", MemorySegment.class /* self */, int.class /* index */);
 
     public void setTop(int index) {
         try {
@@ -721,7 +721,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 
-    private static final MethodHandle strLenMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_strLen", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle strLenMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_strLen", MemorySegment.class /* self */, int.class /* index */);
 
     public int strLen(int index) {
         int RESULT;
@@ -733,7 +733,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle toBooleanMH = PanamaUtils.lookupPNICriticalFunction(true, boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toBoolean", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle toBooleanMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), boolean.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toBoolean", MemorySegment.class /* self */, int.class /* index */);
 
     public boolean toBoolean(int index) {
         boolean RESULT;
@@ -745,7 +745,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle toCFunctionMH = PanamaUtils.lookupPNICriticalFunction(true, MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toCFunction", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle toCFunctionMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toCFunction", MemorySegment.class /* self */, int.class /* index */);
 
     public MemorySegment toCFunction(int index) {
         MemorySegment RESULT;
@@ -758,7 +758,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle toIntegerMH = PanamaUtils.lookupPNICriticalFunction(true, long.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toInteger", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle toIntegerMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), long.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toInteger", MemorySegment.class /* self */, int.class /* index */);
 
     public long toInteger(int index) {
         long RESULT;
@@ -770,7 +770,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle toLStringMH = PanamaUtils.lookupPNICriticalFunction(true, String.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toLString", MemorySegment.class /* self */, int.class /* index */, MemorySegment.class /* len */);
+    private static final MethodHandle toLStringMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), String.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toLString", MemorySegment.class /* self */, int.class /* index */, MemorySegment.class /* len */);
 
     public PNIString toLString(int index, LongArray len) {
         MemorySegment RESULT;
@@ -782,7 +782,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT.address() == 0 ? null : new PNIString(RESULT);
     }
 
-    private static final MethodHandle toNumberMH = PanamaUtils.lookupPNICriticalFunction(true, double.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toNumber", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle toNumberMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), double.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toNumber", MemorySegment.class /* self */, int.class /* index */);
 
     public double toNumber(int index) {
         double RESULT;
@@ -794,7 +794,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle toPointerMH = PanamaUtils.lookupPNICriticalFunction(true, MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toPointer", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle toPointerMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toPointer", MemorySegment.class /* self */, int.class /* index */);
 
     public MemorySegment toPointer(int index) {
         MemorySegment RESULT;
@@ -807,7 +807,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle toStringMH = PanamaUtils.lookupPNICriticalFunction(true, String.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toString", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle toStringMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), String.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toString", MemorySegment.class /* self */, int.class /* index */);
 
     public PNIString toString(int index) {
         MemorySegment RESULT;
@@ -819,7 +819,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT.address() == 0 ? null : new PNIString(RESULT);
     }
 
-    private static final MethodHandle toThreadMH = PanamaUtils.lookupPNICriticalFunction(true, io.vproxy.luajn.n.LuaState.LAYOUT.getClass(), "JavaCritical_io_vproxy_luajn_n_LuaState_toThread", MemorySegment.class /* self */, int.class /* index */, MemorySegment.class /* return */);
+    private static final MethodHandle toThreadMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), io.vproxy.luajn.n.LuaState.LAYOUT.getClass(), "JavaCritical_io_vproxy_luajn_n_LuaState_toThread", MemorySegment.class /* self */, int.class /* index */, MemorySegment.class /* return */);
 
     public io.vproxy.luajn.n.LuaState toThread(int index, Allocator ALLOCATOR) {
         MemorySegment RESULT;
@@ -832,7 +832,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT == null ? null : new io.vproxy.luajn.n.LuaState(RESULT);
     }
 
-    private static final MethodHandle toUserDataMH = PanamaUtils.lookupPNICriticalFunction(true, MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toUserData", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle toUserDataMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_LuaState_toUserData", MemorySegment.class /* self */, int.class /* index */);
 
     public MemorySegment toUserData(int index) {
         MemorySegment RESULT;
@@ -845,7 +845,7 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         return RESULT;
     }
 
-    private static final MethodHandle typeMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_type", MemorySegment.class /* self */, int.class /* index */);
+    private static final MethodHandle typeMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_LuaState_type", MemorySegment.class /* self */, int.class /* index */);
 
     public int type(int index) {
         int RESULT;
@@ -942,5 +942,5 @@ public class LuaState extends AbstractNativeObject implements NativeObject {
         }
     }
 }
-// metadata.generator-version: pni 21.0.0.15
-// sha256:088e278219d459a965aa381a803f98b6dd24265cd922f8aebf6f88d2272c68c0
+// metadata.generator-version: pni 21.0.0.17
+// sha256:d0f8402ab343ce560e2f8b32c6a5f32b5031b19a78823f2e39a8a7dabcaf2643

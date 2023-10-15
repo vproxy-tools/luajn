@@ -16,7 +16,7 @@ public class Lua5_2 {
         return INSTANCE;
     }
 
-    private static final MethodHandle copyMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_Lua5_2_copy", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* fromidx */, int.class /* toidx */);
+    private static final MethodHandle copyMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_Lua5_2_copy", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* fromidx */, int.class /* toidx */);
 
     public void copy(io.vproxy.luajn.n.LuaState _L, int fromidx, int toidx) {
         try {
@@ -26,7 +26,7 @@ public class Lua5_2 {
         }
     }
 
-    private static final MethodHandle upValueIdMH = PanamaUtils.lookupPNICriticalFunction(true, MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_Lua5_2_upValueId", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* funcindex */, int.class /* n */);
+    private static final MethodHandle upValueIdMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), MemorySegment.class, "JavaCritical_io_vproxy_luajn_n_Lua5_2_upValueId", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* funcindex */, int.class /* n */);
 
     public MemorySegment upValueId(io.vproxy.luajn.n.LuaState _L, int funcindex, int n) {
         MemorySegment RESULT;
@@ -39,7 +39,7 @@ public class Lua5_2 {
         return RESULT;
     }
 
-    private static final MethodHandle upValueJoinMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_n_Lua5_2_upValueJoin", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* funcindex1 */, int.class /* n1 */, int.class /* funcindex2 */, int.class /* n2 */);
+    private static final MethodHandle upValueJoinMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_n_Lua5_2_upValueJoin", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* funcindex1 */, int.class /* n1 */, int.class /* funcindex2 */, int.class /* n2 */);
 
     public void upValueJoin(io.vproxy.luajn.n.LuaState _L, int funcindex1, int n1, int funcindex2, int n2) {
         try {
@@ -49,7 +49,7 @@ public class Lua5_2 {
         }
     }
 
-    private static final MethodHandle toNumberXMH = PanamaUtils.lookupPNICriticalFunction(true, double.class, "JavaCritical_io_vproxy_luajn_n_Lua5_2_toNumberX", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* index */, MemorySegment.class /* isnum */);
+    private static final MethodHandle toNumberXMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), double.class, "JavaCritical_io_vproxy_luajn_n_Lua5_2_toNumberX", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* index */, MemorySegment.class /* isnum */);
 
     public double toNumberX(io.vproxy.luajn.n.LuaState _L, int index, IntArray isnum) {
         double RESULT;
@@ -61,7 +61,7 @@ public class Lua5_2 {
         return RESULT;
     }
 
-    private static final MethodHandle toIntegerXMH = PanamaUtils.lookupPNICriticalFunction(true, long.class, "JavaCritical_io_vproxy_luajn_n_Lua5_2_toIntegerX", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* index */, MemorySegment.class /* isnum */);
+    private static final MethodHandle toIntegerXMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), long.class, "JavaCritical_io_vproxy_luajn_n_Lua5_2_toIntegerX", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* index */, MemorySegment.class /* isnum */);
 
     public long toIntegerX(io.vproxy.luajn.n.LuaState _L, int index, IntArray isnum) {
         long RESULT;
@@ -73,5 +73,5 @@ public class Lua5_2 {
         return RESULT;
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:813d7fe2b8c465ae5b13a48b757f4a5da594dbc3b5391ced861f050425b873c5
+// metadata.generator-version: pni 21.0.0.17
+// sha256:50f6bb00ce2fc3b72dee3c83de76002d82450d842cda614e6e9fe9ea4a756207

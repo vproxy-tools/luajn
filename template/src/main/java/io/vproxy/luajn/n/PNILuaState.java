@@ -23,7 +23,7 @@ public abstract class PNILuaState {
             lua_close(L);
             """
     )
-    @Critical
+    @Style(Styles.critical)
     abstract void close();
 
     @Impl(
@@ -33,7 +33,7 @@ public abstract class PNILuaState {
             lua_call(L, nargs, nresults);
             """
     )
-    @Critical
+    @Style(Styles.critical)
     abstract void call(int nargs, int nresults);
 
     @Impl(
@@ -43,8 +43,8 @@ public abstract class PNILuaState {
             lua_call(L, nargs, nresults);
             """
     )
-    @Critical
-    @Trivial
+    @Style(Styles.critical)
+    @LinkerOption.Critical
     abstract void callTrivial(int nargs, int nresults);
 
     @Impl(
@@ -54,8 +54,8 @@ public abstract class PNILuaState {
             return lua_checkstack(L, extra);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean checkStack(int extra);
 
     @Impl(
@@ -65,8 +65,8 @@ public abstract class PNILuaState {
             lua_concat(L, n);
             """
     )
-    @Critical
-    @Trivial
+    @Style(Styles.critical)
+    @LinkerOption.Critical
     abstract void concat(int n);
 
     @Impl(
@@ -76,8 +76,8 @@ public abstract class PNILuaState {
             lua_createtable(L, narr, nrec);
             """
     )
-    @Critical
-    @Trivial
+    @Style(Styles.critical)
+    @LinkerOption.Critical
     abstract void createTable(int narr, int nrec);
 
     @Impl(
@@ -91,8 +91,8 @@ public abstract class PNILuaState {
             #endif
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean equal(int index1, int index2);
 
     @Impl(
@@ -102,8 +102,8 @@ public abstract class PNILuaState {
             return lua_error(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract int error();
 
     @Impl(
@@ -113,8 +113,8 @@ public abstract class PNILuaState {
             lua_getfield(L, index, k);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void getField(int index, String k);
 
     @Impl(
@@ -128,8 +128,8 @@ public abstract class PNILuaState {
             #endif
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void getFEnv(int index);
 
     @Impl(
@@ -139,8 +139,8 @@ public abstract class PNILuaState {
             lua_getglobal(L, name);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void getGlobal(String name);
 
     @Impl(
@@ -150,8 +150,8 @@ public abstract class PNILuaState {
             return lua_getmetatable(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract int getMetaTable(int index);
 
     @Impl(
@@ -161,8 +161,8 @@ public abstract class PNILuaState {
             lua_gettable(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void getTable(int index);
 
     @Impl(
@@ -172,8 +172,8 @@ public abstract class PNILuaState {
             return lua_gettop(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract int getTop();
 
     @Impl(
@@ -183,8 +183,8 @@ public abstract class PNILuaState {
             lua_insert(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void insert(int index);
 
     @Impl(
@@ -194,8 +194,8 @@ public abstract class PNILuaState {
             return lua_isboolean(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean isBoolean(int index);
 
     @Impl(
@@ -205,8 +205,8 @@ public abstract class PNILuaState {
             return lua_iscfunction(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean isCFunction(int index);
 
     @Impl(
@@ -216,8 +216,8 @@ public abstract class PNILuaState {
             return lua_isfunction(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean isFunction(int index);
 
     @Impl(
@@ -227,8 +227,8 @@ public abstract class PNILuaState {
             return lua_islightuserdata(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean isLightUserData(int index);
 
     @Impl(
@@ -238,8 +238,8 @@ public abstract class PNILuaState {
             return lua_isnil(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean isNil(int index);
 
     @Impl(
@@ -249,8 +249,8 @@ public abstract class PNILuaState {
             return lua_isnone(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean isNone(int index);
 
     @Impl(
@@ -260,8 +260,8 @@ public abstract class PNILuaState {
             return lua_isnoneornil(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean isNoneOrNil(int index);
 
     @Impl(
@@ -271,8 +271,8 @@ public abstract class PNILuaState {
             return lua_isnumber(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean isNumber(int index);
 
     @Impl(
@@ -282,8 +282,8 @@ public abstract class PNILuaState {
             return lua_isstring(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean isString(int index);
 
     @Impl(
@@ -293,8 +293,8 @@ public abstract class PNILuaState {
             return lua_istable(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean isTable(int index);
 
     @Impl(
@@ -304,8 +304,8 @@ public abstract class PNILuaState {
             return lua_isthread(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean isThread(int index);
 
     @Impl(
@@ -315,8 +315,8 @@ public abstract class PNILuaState {
             return lua_isuserdata(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean isUserdata(int index);
 
     @Impl(
@@ -330,8 +330,8 @@ public abstract class PNILuaState {
             #endif
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean lessthan(int idx1, int idx2);
 
     @Impl(
@@ -341,8 +341,8 @@ public abstract class PNILuaState {
             lua_newtable(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void newTable();
 
     @Impl(
@@ -352,8 +352,8 @@ public abstract class PNILuaState {
             return lua_newuserdata(L, size);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract MemorySegment newUserData(long size);
 
     @Impl(
@@ -363,8 +363,8 @@ public abstract class PNILuaState {
             return lua_next(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean next(int index);
 
     @Impl(
@@ -378,8 +378,8 @@ public abstract class PNILuaState {
             #endif
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract long objLen(int index);
 
     @Impl(
@@ -389,7 +389,7 @@ public abstract class PNILuaState {
             return lua_pcall(L, nargs, nresults, errfunc);
             """
     )
-    @Critical
+    @Style(Styles.critical)
     abstract int pcall(int nargs, int nresults, int errfunc);
 
     @Impl(
@@ -398,8 +398,8 @@ public abstract class PNILuaState {
             return JavaCritical_io_vproxy_luajn_n_LuaState_pcall(self, nargs, nresults, errfunc);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract int pcallTrivial(int nargs, int nresults, int errfunc);
 
     @Impl(
@@ -409,8 +409,8 @@ public abstract class PNILuaState {
             lua_pop(L, n);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pop(int n);
 
     @Impl(
@@ -420,8 +420,8 @@ public abstract class PNILuaState {
             lua_pushboolean(L, b);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pushBoolean(boolean b);
 
     @Impl(
@@ -437,8 +437,8 @@ public abstract class PNILuaState {
             lua_pushcclosure(L, luajn_upcall_closure, n + 1);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pushClosure(PNIFunc<PNILuaState> fn, int n);
 
     @Impl(
@@ -448,8 +448,8 @@ public abstract class PNILuaState {
             lua_pushcclosure(L, (lua_CFunction) fn, n);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pushCClosure(MemorySegment fn, int n);
 
     @Impl(
@@ -459,8 +459,8 @@ public abstract class PNILuaState {
             lua_pushcfunction(L, (lua_CFunction) fn);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pushCFunction(MemorySegment fn);
 
     @Impl(
@@ -475,8 +475,8 @@ public abstract class PNILuaState {
             lua_pushcclosure(L, luajn_upcall_closure, 1);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pushFunction(PNIFunc<PNILuaState> fn);
 
     @Impl(
@@ -486,8 +486,8 @@ public abstract class PNILuaState {
             lua_pushinteger(L, n);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pushInteger(long n);
 
     @Impl(
@@ -497,8 +497,8 @@ public abstract class PNILuaState {
             lua_pushlightuserdata(L, p);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pushLightUserData(MemorySegment p);
 
     @Impl(
@@ -508,8 +508,8 @@ public abstract class PNILuaState {
             lua_pushlstring(L, s, len);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pushLString(String s, long len);
 
     @Impl(
@@ -519,8 +519,8 @@ public abstract class PNILuaState {
             lua_pushnil(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pushNil();
 
     @Impl(
@@ -530,8 +530,8 @@ public abstract class PNILuaState {
             lua_pushnumber(L, n);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pushNumber(double n);
 
     @Impl(
@@ -541,8 +541,8 @@ public abstract class PNILuaState {
             lua_pushstring(L, s);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pushString(String s);
 
     @Impl(
@@ -552,8 +552,8 @@ public abstract class PNILuaState {
             return lua_pushthread(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract int pushThread();
 
     @Impl(
@@ -574,8 +574,8 @@ public abstract class PNILuaState {
             }
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pushUserData(MemorySegment data, long size, String metatableName);
 
     @Impl(
@@ -585,8 +585,8 @@ public abstract class PNILuaState {
             lua_pushvalue(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void pushValue(int index);
 
     @Impl(
@@ -596,8 +596,8 @@ public abstract class PNILuaState {
             return lua_rawequal(L, idx1, idx2);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean rawEqual(int idx1, int idx2);
 
     @Impl(
@@ -607,8 +607,8 @@ public abstract class PNILuaState {
             lua_rawget(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void rawGet(int index);
 
     @Impl(
@@ -618,8 +618,8 @@ public abstract class PNILuaState {
             lua_rawgeti(L, index, n);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void rawGetI(int index, int n);
 
     @Impl(
@@ -629,8 +629,8 @@ public abstract class PNILuaState {
             lua_rawset(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void rawSet(int index);
 
     @Impl(
@@ -640,8 +640,8 @@ public abstract class PNILuaState {
             lua_rawseti(L, index, n);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void rawSetI(int index, int n);
 
     @Impl(
@@ -651,8 +651,8 @@ public abstract class PNILuaState {
             lua_remove(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void remove(int index);
 
     @Impl(
@@ -662,8 +662,8 @@ public abstract class PNILuaState {
             lua_replace(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void replace(int index);
 
     @Impl(
@@ -678,8 +678,8 @@ public abstract class PNILuaState {
             #endif
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract int setFEnv(int index);
 
     @Impl(
@@ -689,8 +689,8 @@ public abstract class PNILuaState {
             lua_setfield(L, index, k);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void setField(int index, String k);
 
     @Impl(
@@ -700,8 +700,8 @@ public abstract class PNILuaState {
             lua_setglobal(L, name);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void setGlobal(String name);
 
     @Impl(
@@ -711,8 +711,8 @@ public abstract class PNILuaState {
             return lua_setmetatable(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract int setMetaTable(int index);
 
     @Impl(
@@ -722,8 +722,8 @@ public abstract class PNILuaState {
             lua_settable(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void setTable(int index);
 
     @Impl(
@@ -733,8 +733,8 @@ public abstract class PNILuaState {
             lua_settop(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract void setTop(int index);
 
     @Impl(
@@ -748,8 +748,8 @@ public abstract class PNILuaState {
             #endif
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract int strLen(int index);
 
     @Impl(
@@ -759,8 +759,8 @@ public abstract class PNILuaState {
             return lua_toboolean(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract boolean toBoolean(int index);
 
     @Impl(
@@ -770,8 +770,8 @@ public abstract class PNILuaState {
             return lua_tocfunction(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract MemorySegment toCFunction(int index);
 
     @Impl(
@@ -781,8 +781,8 @@ public abstract class PNILuaState {
             return lua_tointeger(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract long toInteger(int index);
 
     @Impl(
@@ -792,8 +792,8 @@ public abstract class PNILuaState {
             return (char*) lua_tolstring(L, index, (size_t*) len);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract String toLString(int index, @Unsigned @Raw long[] len);
 
     @Impl(
@@ -803,8 +803,8 @@ public abstract class PNILuaState {
             return lua_tonumber(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract double toNumber(int index);
 
     @Impl(
@@ -814,8 +814,8 @@ public abstract class PNILuaState {
             return (void*) lua_topointer(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract MemorySegment toPointer(int index);
 
     @Impl(
@@ -825,8 +825,8 @@ public abstract class PNILuaState {
             return (char*) lua_tostring(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract String toString(int index);
 
     @Impl(
@@ -839,8 +839,8 @@ public abstract class PNILuaState {
             return return_;
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract PNILuaState toThread(int index);
 
     @Impl(
@@ -850,8 +850,8 @@ public abstract class PNILuaState {
             return lua_touserdata(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract MemorySegment toUserData(int index);
 
     @Impl(
@@ -861,7 +861,7 @@ public abstract class PNILuaState {
             return lua_type(L, index);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     abstract int type(int index);
 }

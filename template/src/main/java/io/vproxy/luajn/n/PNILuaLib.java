@@ -1,12 +1,9 @@
 package io.vproxy.luajn.n;
 
-import io.vproxy.pni.annotation.Critical;
-import io.vproxy.pni.annotation.Function;
-import io.vproxy.pni.annotation.Impl;
-import io.vproxy.pni.annotation.Trivial;
+import io.vproxy.pni.annotation.*;
 
 @SuppressWarnings("unused")
-@Function
+@Downcall
 public interface PNILuaLib {
     @Impl(
         // language="c"
@@ -16,8 +13,8 @@ public interface PNILuaLib {
             JavaCritical_io_vproxy_luajn_n_LuaLib_openLuaJN(_L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openLibs(PNILuaState _L);
 
     @Impl(
@@ -34,8 +31,8 @@ public interface PNILuaLib {
             lua_pop(L, 1);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openLuaJN(PNILuaState _L);
 
     @Impl(
@@ -45,8 +42,8 @@ public interface PNILuaLib {
             luaopen_base(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openBase(PNILuaState _L);
 
     @Impl(
@@ -56,8 +53,8 @@ public interface PNILuaLib {
             luaopen_math(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openMath(PNILuaState _L);
 
     @Impl(
@@ -67,8 +64,8 @@ public interface PNILuaLib {
             luaopen_string(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openString(PNILuaState _L);
 
     @Impl(
@@ -78,8 +75,8 @@ public interface PNILuaLib {
             luaopen_table(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openTable(PNILuaState _L);
 
     @Impl(
@@ -89,8 +86,8 @@ public interface PNILuaLib {
             luaopen_io(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openIO(PNILuaState _L);
 
     @Impl(
@@ -100,8 +97,8 @@ public interface PNILuaLib {
             luaopen_os(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openOS(PNILuaState _L);
 
     @Impl(
@@ -111,8 +108,8 @@ public interface PNILuaLib {
             luaopen_package(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openPackage(PNILuaState _L);
 
     @Impl(
@@ -122,7 +119,7 @@ public interface PNILuaLib {
             luaopen_debug(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void openDebug(PNILuaState _L);
 }

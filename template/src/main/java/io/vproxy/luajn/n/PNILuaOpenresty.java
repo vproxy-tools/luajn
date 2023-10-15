@@ -5,7 +5,7 @@ import io.vproxy.pni.annotation.*;
 import java.lang.foreign.MemorySegment;
 
 @SuppressWarnings("unused")
-@Function
+@Downcall
 @Include({
     "<luajit.h>",
 })
@@ -17,8 +17,8 @@ public interface PNILuaOpenresty {
             return lua_getexdata(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     MemorySegment getExData(PNILuaState _L);
 
     @Impl(
@@ -28,8 +28,8 @@ public interface PNILuaOpenresty {
             lua_setexdata(L, exdata);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void setExData(PNILuaState _L, MemorySegment exdata);
 
     @Impl(
@@ -39,8 +39,8 @@ public interface PNILuaOpenresty {
             return lua_getexdata2(L);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     MemorySegment getExData2(PNILuaState _L);
 
     @Impl(
@@ -50,8 +50,8 @@ public interface PNILuaOpenresty {
             lua_setexdata2(L, exdata);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void setExData2(PNILuaState _L, MemorySegment exdata);
 
     @Impl(
@@ -62,7 +62,7 @@ public interface PNILuaOpenresty {
             lua_resetthread(L, th);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void resetThread(PNILuaState _L, PNILuaState _th);
 }

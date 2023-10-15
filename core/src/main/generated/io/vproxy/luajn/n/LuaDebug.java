@@ -7,7 +7,7 @@ import java.lang.invoke.*;
 import java.nio.ByteBuffer;
 
 public class LuaDebug extends AbstractNativeObject implements NativeObject {
-    private static final MethodHandle __getLayoutByteSizeMH = PanamaUtils.lookupPNICriticalFunction(true, long.class, "JavaCritical_io_vproxy_luajn_n_LuaDebug___getLayoutByteSize");
+    private static final MethodHandle __getLayoutByteSizeMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), long.class, "JavaCritical_io_vproxy_luajn_n_LuaDebug___getLayoutByteSize");
 
     private static long __getLayoutByteSize() {
         long RESULT;
@@ -275,8 +275,7 @@ public class LuaDebug extends AbstractNativeObject implements NativeObject {
         SB.append(",\n");
         {
             SB.append(" ".repeat(INDENT + 4)).append("shortSrc => ");
-            if (CORRUPTED_MEMORY) SB.append("<?>");
-            else SB.append(PanamaUtils.memorySegmentToString(getShortSrc()));
+            SB.append(PanamaUtils.memorySegmentToString(getShortSrc()));
         }
         SB.append("\n");
         SB.append(" ".repeat(INDENT)).append("}@").append(Long.toString(MEMORY.address(), 16));
@@ -352,5 +351,5 @@ public class LuaDebug extends AbstractNativeObject implements NativeObject {
         }
     }
 }
-// metadata.generator-version: pni 21.0.0.15
-// sha256:df4c8255bb966fc5b422a127c84648b54e002faa8e1d01cd5389ddded1342308
+// metadata.generator-version: pni 21.0.0.17
+// sha256:a54b977143d389e455d023ef6879defa4b42813188cd5124adc997abff9f3711

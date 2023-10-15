@@ -16,7 +16,7 @@ public class LuaJIT {
         return INSTANCE;
     }
 
-    private static final MethodHandle setModeMH = PanamaUtils.lookupPNICriticalFunction(true, int.class, "JavaCritical_io_vproxy_luajn_n_LuaJIT_setMode", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* idx */, int.class /* mode */);
+    private static final MethodHandle setModeMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), int.class, "JavaCritical_io_vproxy_luajn_n_LuaJIT_setMode", io.vproxy.luajn.n.LuaState.LAYOUT.getClass() /* _L */, int.class /* idx */, int.class /* mode */);
 
     public int setMode(io.vproxy.luajn.n.LuaState _L, int idx, int mode) {
         int RESULT;
@@ -28,5 +28,5 @@ public class LuaJIT {
         return RESULT;
     }
 }
-// metadata.generator-version: pni 21.0.0.8
-// sha256:269da573bac3e67439c198093a9324feebeed3c2231a55a54307710d0492b3a5
+// metadata.generator-version: pni 21.0.0.17
+// sha256:eac5064d69b8c49f6005046d44b732e72a40dec9d30d0baa6512289db73a9c35

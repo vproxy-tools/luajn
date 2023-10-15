@@ -56,7 +56,7 @@ public class TutorialNative extends AbstractNativeObject implements NativeObject
         this(ALLOCATOR.allocate(LAYOUT));
     }
 
-    private static final MethodHandle dummyPlaceHolderForGeneratingImplHFileMH = PanamaUtils.lookupPNICriticalFunction(true, void.class, "JavaCritical_io_vproxy_luajn_tutorial_TutorialNative_dummyPlaceHolderForGeneratingImplHFile", MemorySegment.class /* self */);
+    private static final MethodHandle dummyPlaceHolderForGeneratingImplHFileMH = PanamaUtils.lookupPNICriticalFunction(new PNILinkOptions().setCritical(true), void.class, "JavaCritical_io_vproxy_luajn_tutorial_TutorialNative_dummyPlaceHolderForGeneratingImplHFile", MemorySegment.class /* self */);
 
     public void dummyPlaceHolderForGeneratingImplHFile() {
         try {
@@ -156,5 +156,5 @@ public class TutorialNative extends AbstractNativeObject implements NativeObject
         }
     }
 }
-// metadata.generator-version: pni 21.0.0.15
-// sha256:c15775ada310a3cc7bc03e1f256238850c15c486ed5db867109d3b6cf4efe08c
+// metadata.generator-version: pni 21.0.0.17
+// sha256:6787fcdb5bda1ab57756c19d5bb7f4e505adc6876b5447308fde89bca64e9b17

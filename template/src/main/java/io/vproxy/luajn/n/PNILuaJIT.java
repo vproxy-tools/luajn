@@ -3,7 +3,7 @@ package io.vproxy.luajn.n;
 import io.vproxy.pni.annotation.*;
 
 @SuppressWarnings("unused")
-@Function
+@Downcall
 @Include({
     "<luajit.h>",
 })
@@ -15,7 +15,7 @@ public interface PNILuaJIT {
             return luaJIT_setmode(L, idx, mode);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int setMode(PNILuaState _L, int idx, int mode);
 }

@@ -42,11 +42,10 @@ rm -f "$target"
 gcc -std=gnu99 -O2 \
     $GCC_OPTS \
     -I "$LUA_INC" \
-    -I "../../../../misc" \
     -I "../c-generated" \
     -I "../../../../core/src/main/c-generated" \
-    -L "$LUA_LD/" \
-    -shared -Werror -lc -lluajit-5.1 -fPIC \
+    -L "$LUA_LD/" -L "../../../../core/src/main/c" \
+    -shared -Werror -lc -lluajit-5.1 -lluajn -fPIC \
     tutorial.c \
     ../c-generated/io_vproxy_luajn_tutorial_TutorialUpcall.c \
     -o "$target"

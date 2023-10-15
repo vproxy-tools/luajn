@@ -6,16 +6,16 @@ import io.vproxy.pni.annotation.*;
 @Include({
     "<lua.h>",
 })
-@Function
+@Downcall
 public interface PNIHelper5_2 {
     @Impl(c = "return LUA_GCISRUNNING;")
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int LUA_GCISRUNNING();
 
     @Impl(c = "return LUA_OK;")
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int LUA_OK();
 
     @Impl(c = """
@@ -25,7 +25,7 @@ public interface PNIHelper5_2 {
         return 2;
         #endif
         """)
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     int LUA_RIDX_GLOBALS();
 }

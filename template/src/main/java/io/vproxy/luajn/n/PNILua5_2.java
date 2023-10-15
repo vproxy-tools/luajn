@@ -5,7 +5,7 @@ import io.vproxy.pni.annotation.*;
 import java.lang.foreign.MemorySegment;
 
 @SuppressWarnings("unused")
-@Function
+@Downcall
 @Include({
     "<lua.h>",
     "<lauxlib.h>",
@@ -19,8 +19,8 @@ public interface PNILua5_2 {
             lua_copy(L, fromidx, toidx);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void copy(PNILuaState _L, int fromidx, int toidx);
 
     @Impl(
@@ -30,8 +30,8 @@ public interface PNILua5_2 {
             return lua_upvalueid(L, funcindex, n);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     MemorySegment upValueId(PNILuaState _L, int funcindex, int n);
 
     @Impl(
@@ -41,8 +41,8 @@ public interface PNILua5_2 {
             lua_upvaluejoin(L, funcindex1, n1, funcindex2, n2);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     void upValueJoin(PNILuaState _L, int funcindex1, int n1, int funcindex2, int n2);
 
     @Impl(
@@ -52,8 +52,8 @@ public interface PNILua5_2 {
             return lua_tonumberx(L, index, isnum);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     double toNumberX(PNILuaState _L, int index, @Raw int[] isnum);
 
     @Impl(
@@ -63,7 +63,7 @@ public interface PNILua5_2 {
             return lua_tointegerx(L, index, isnum);
             """
     )
-    @Trivial
-    @Critical
+    @LinkerOption.Critical
+    @Style(Styles.critical)
     long toIntegerX(PNILuaState _L, int index, @Raw int[] isnum);
 }
